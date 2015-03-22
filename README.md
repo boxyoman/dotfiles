@@ -9,7 +9,9 @@ Submodules
 I have two submodules. One for antigen and one for my vim configuration.  I'll 
 eventually merge my vim repo with this repo. Make sure to initialize them with
 
+```
   git submodule update --init --recursive
+```
 
 Install
 =======
