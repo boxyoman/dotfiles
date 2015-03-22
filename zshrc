@@ -1,3 +1,24 @@
+### OS Detection
+UNAME=`uname`
+
+# Fallback info
+CURRENT_OS='Linux'
+DISTRO=''
+
+if [[ $UNAME == 'Darwin' ]]; then
+  CURRENT_OS='OS X'
+else
+  # Must be Linux, determine distro
+  if [[ -f /etc/redhat-release ]]; then
+    # CentOS or Redhat?
+    if grep -q "CentOS" /etc/redhat-release; then
+      DISTRO='CentOS'
+    else
+      DISTRO='RHEL'
+    fi
+  fi
+fi
+
 # Antigen Configuration
 source dotfiles/antigen/antigen.zsh
 
@@ -20,10 +41,12 @@ antigen theme pygmalion
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
 
-
+# OS specific stuff
 if [[ $CURRENT_OS == 'OS X' ]]; then
   antigen bundle osx
   antigen bundle macports
+  antigen bundle brew
+  export PATH="/opt/local/bin":$PATH
 elif [[ $CURRENT_OS == 'Linux' ]]; then
   antigen bundle chucknorris
   antigen bundle archlinux 
