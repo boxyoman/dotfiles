@@ -1,0 +1,146 @@
+" Change Leader
+let mapleader = ","
+
+" Local .vimrc
+set exrc
+set secure
+
+" Tab
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
+set expandtab
+
+" random settings
+set encoding=utf-8
+set showmode
+set showcmd
+set visualbell
+set cursorline
+set ttyfast
+set relativenumber
+set undofile
+set undodir=~/.nvim/undo
+set undolevels=1000
+set undoreload=10000
+set ruler
+set hidden
+set spelllang=en_us
+au FocusLost * :wa
+set winaltkeys=no
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+" Search stuff
+set incsearch
+set smartcase
+set ignorecase
+set gdefault
+set hlsearch
+set showmatch
+nnoremap <leader><space> :noh<cr>
+
+" long lines
+set wrap
+set textwidth=79
+set formatoptions=tqcnw1
+set colorcolumn=80
+
+" some remapping
+nnoremap j gj
+nnoremap k gk
+inoremap jk <ESC>
+
+" Quick Macro
+nnoremap Q @q
+
+" Easy Copy and paste from clip board
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+nnoremap <leader>y "+y
+nnoremap <leader>Y "+Y
+
+" Window mappings
+nnoremap <leader>w <C-w>n<C-w>L
+nnoremap <leader><leader> <c-w><c-w>
+nnoremap <c-w>n :vnew<cr>
+cmap w!! w !sudo /usr/bin/tee > /dev/null %
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+" some file specific stuff
+au BufReadPost,BufRead *.md set filetype=markdown
+
+" Invisable Characters
+nmap sl :set list!<CR>
+set listchars=tab:▸\ ,eol:¬
+
+"Invisible character colors 
+highlight NonText guifg=#4a4a59
+highlight SpecialKey guifg=#4a4a59
+
+" Buffer Remapping
+nnoremap ,bn :bn<cr>
+nnoremap ,bp :bp<cr>
+
+" vim-plug, some plugin manager
+call plug#begin('~/.nvim/plugged')
+
+Plug 'SirVer/ultisnips'
+Plug 'vim-scripts/vim-xdc-syntax'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-fugitive'
+Plug 'lervag/vim-latex'
+Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-surround'
+Plug 'sjl/gundo.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'kien/ctrlp.vim'
+Plug 'rdnetto/YCM-Generator'
+Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
+
+Plug 'bling/vim-airline'
+
+call plug#end()
+
+" Theme Stuff
+let g:airline_theme='kalisi'
+set t_Co=256
+set laststatus=2
+let g:airline_powerline_fonts = 1
+
+" CTRlp
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'a'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o
+
+"YouCompleteMe
+let g:ycm_confirm_extra_conf = 0
+nnoremap gd :YcmCompleter GoTo<CR>
+let g:Show_diagnostics_ui = 1 
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
+"UltiSnip
+let g:UltiSnipsSnippetsDir    = '~/.vim/UltiSnips'
+let g:UltiSnipsExpandTrigger  = "<c-j>"
+let g:UltiJumpForwardTrigger  = "<c-j>"
+let g:UltiJumpBackwardTrigger = "<c-s-j>"
+
+" NERDTree
+nnoremap <leader>o :NERDTreeToggle<CR>
+
+" Easy Align
+map ga <Plug>(EasyAlign)
+
+" Gundo
+nnoremap <F5> :GundoToggle<CR>
+
+" set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
+" Reload vimrc upon save. 
+augroup myvimrc
+  au!
+  au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
+

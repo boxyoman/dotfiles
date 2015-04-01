@@ -20,7 +20,7 @@ else
 fi
 
 # Antigen Configuration
-source dotfiles/antigen/antigen.zsh
+source ~/dotfiles/antigen/antigen.zsh
 
 # Use oh-my-zsh
 antigen use oh-my-zsh
@@ -47,16 +47,20 @@ if [[ $CURRENT_OS == 'OS X' ]]; then
   antigen bundle macports
   antigen bundle brew
   export PATH="/opt/local/bin":$PATH
+  # My Mac Editor
+  export EDITOR=nvim
+  alias vim=nvim
 elif [[ $CURRENT_OS == 'Linux' ]]; then
   antigen bundle chucknorris
   antigen bundle archlinux 
   antigen bundle systemd 
+  # My Linux Editor
+  # I want to make it neovim in the future
+  export EDITOR=vim
   export PATH="/home/jonny/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
 fi
 
 antigen apply
 
-source dotfiles/zshcustom/vim.zsh
+source ~/dotfiles/zshcustom/vim.zsh
 
-# My Editor
-export EDITOR=vim
