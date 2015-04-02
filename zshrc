@@ -51,7 +51,7 @@ elif [[ $CURRENT_OS == 'Linux' ]]; then
   antigen bundle chucknorris
   antigen bundle archlinux 
   antigen bundle systemd 
-  export PATH="/home/jonny/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
+  export PATH="/home/jonny/.linuxbrew/bin:/home/jonny/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
 fi
 
 antigen apply
