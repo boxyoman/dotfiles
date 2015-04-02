@@ -72,7 +72,7 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 au BufReadPost,BufRead *.md set filetype=markdown
 
 " Invisable Characters
-nmap sl :set list!<CR>
+nmap <leader>l :set list!<CR>
 set listchars=tab:▸\ ,eol:¬
 
 "Invisible character colors 
@@ -80,8 +80,8 @@ highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
 
 " Buffer Remapping
-nnoremap ,bn :bn<cr>
-nnoremap ,bp :bp<cr>
+nnoremap <leader>bn :bn<cr>
+nnoremap <leader>bp :bp<cr>
 
 " vim-plug, some plugin manager
 call plug#begin('~/.nvim/plugged')
@@ -98,6 +98,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'kien/ctrlp.vim'
 Plug 'rdnetto/YCM-Generator'
 Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
+Plug 'justinmk/vim-sneak'
 
 Plug 'bling/vim-airline'
 
