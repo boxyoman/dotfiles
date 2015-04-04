@@ -47,19 +47,15 @@ if [[ $CURRENT_OS == 'OS X' ]]; then
   antigen bundle macports
   antigen bundle brew
   export PATH="/opt/local/bin":$PATH
-  # My Mac Editor
-  export EDITOR=nvim
-  alias vim=nvim
 elif [[ $CURRENT_OS == 'Linux' ]]; then
   antigen bundle chucknorris
   antigen bundle archlinux 
   antigen bundle systemd 
   export PATH="/home/jonny/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
-  # My Linux Editor
-  # I want to make it neovim in the future
-  export EDITOR=vim
 fi
 
+alias vim=nvim
+export EDITOR=nvim
 antigen apply
 
 source ~/dotfiles/zshcustom/vim.zsh
