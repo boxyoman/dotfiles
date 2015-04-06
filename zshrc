@@ -34,6 +34,7 @@ antigen bundle history-substring-search
 antigen bundle web-search 
 antigen bundle sharat87/autoenv
 antigen bundle hchbaw/opp.zsh
+antigen bundle tarruda/zsh-autosuggestions
 
 # Theme
 antigen theme pygmalion

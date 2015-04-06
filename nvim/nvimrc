@@ -83,6 +83,10 @@ highlight SpecialKey guifg=#4a4a59
 nnoremap <leader>bn :bn<cr>
 nnoremap <leader>bp :bp<cr>
 
+" C++ options
+set cino=N-s
+set cino+=g0
+
 " vim-plug, some plugin manager
 call plug#begin('~/.nvim/plugged')
 
@@ -99,6 +103,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'rdnetto/YCM-Generator'
 Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
 Plug 'justinmk/vim-sneak'
+Plug 'scrooloose/nerdcommenter'
 
 Plug 'bling/vim-airline'
 
