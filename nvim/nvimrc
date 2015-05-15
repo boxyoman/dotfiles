@@ -83,6 +83,12 @@ highlight SpecialKey guifg=#4a4a59
 nnoremap <leader>bn :bn<cr>
 nnoremap <leader>bp :bp<cr>
 
+nnoremap <leader>t :tabnew<cr>:term<cr>
+
+" terminal mode
+tmap <leader><leader> <c-\><c-n><leader><leader>
+tmap gt <c-\><c-n>gt
+
 " C++ options
 set cino=N-s
 set cino+=g0
@@ -104,6 +110,7 @@ Plug 'rdnetto/YCM-Generator'
 Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
 Plug 'justinmk/vim-sneak'
 Plug 'scrooloose/nerdcommenter'
+Plug 'vim-scripts/a.vim'
 
 Plug 'bling/vim-airline'
 

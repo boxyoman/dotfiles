@@ -47,7 +47,7 @@ if [[ $CURRENT_OS == 'OS X' ]]; then
   antigen bundle osx
   antigen bundle macports
   antigen bundle brew
-  export PATH="/opt/local/bin":$PATH
+  export PATH="/usr/local/opt/llvm36/bin:/opt/local/bin":$PATH
 elif [[ $CURRENT_OS == 'Linux' ]]; then
   antigen bundle chucknorris
   antigen bundle archlinux 
