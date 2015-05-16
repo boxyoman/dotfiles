@@ -60,6 +60,8 @@ nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 nnoremap <leader>y "+y
 nnoremap <leader>Y "+Y
+vnoremap <leader>y "+y
+vnoremap <leader>p "+p
 
 " Window mappings
 nnoremap <leader>w <C-w>n<C-w>L
@@ -83,6 +85,7 @@ highlight SpecialKey guifg=#4a4a59
 nnoremap <leader>bn :bn<cr>
 nnoremap <leader>bp :bp<cr>
 
+" Open new tab with terminal
 nnoremap <leader>t :tabnew<cr>:term<cr>
 
 " terminal mode
@@ -112,6 +115,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'scrooloose/nerdcommenter'
 Plug 'vim-scripts/a.vim'
 
+Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'bling/vim-airline'
 
 call plug#end()
@@ -127,6 +131,9 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'a'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o
+
+" C++ highighting
+let g:cpp_class_scope_highlight = 1
 
 "YouCompleteMe
 let g:ycm_confirm_extra_conf = 0
@@ -147,7 +154,7 @@ nnoremap <leader>o :NERDTreeToggle<CR>
 map ga <Plug>(EasyAlign)
 
 " Gundo
-nnoremap <F5> :GundoToggle<CR>
+nnoremap <leader>u :GundoToggle<CR>
 
 " set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
