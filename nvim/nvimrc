@@ -51,6 +51,8 @@ set colorcolumn=80
 nnoremap j gj
 nnoremap k gk
 inoremap jk <ESC>
+nnoremap <c-e> 3<c-e>
+nnoremap <c-y> 3<c-y>
 
 " Quick Macro
 nnoremap Q @q
@@ -137,9 +139,12 @@ let g:cpp_class_scope_highlight = 1
 
 "YouCompleteMe
 let g:ycm_confirm_extra_conf = 0
-nnoremap gd :YcmCompleter GoTo<CR>
+nnoremap yd :YcmCompleter GoTo<CR>
+nnoremap yg :YcmCompleter GetType<CR>
+nnoremap yp :YcmCompleter GetParent<CR>
 let g:Show_diagnostics_ui = 1 
 let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_add_preview_to_completeopt = 1
 
 "UltiSnip
 let g:UltiSnipsSnippetsDir    = '~/.vim/UltiSnips'

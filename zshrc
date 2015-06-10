@@ -35,6 +35,7 @@ antigen bundle web-search
 antigen bundle sharat87/autoenv
 antigen bundle hchbaw/opp.zsh
 antigen bundle tarruda/zsh-autosuggestions
+antigen bundle chucknorris
 
 # Theme
 antigen theme pygmalion
@@ -47,9 +48,8 @@ if [[ $CURRENT_OS == 'OS X' ]]; then
   antigen bundle osx
   antigen bundle macports
   antigen bundle brew
-  export PATH="/usr/local/opt/llvm36/bin:/opt/local/bin":$PATH
+  export PATH="/usr/local/opt/llvm/bin:/opt/local/bin":$PATH
 elif [[ $CURRENT_OS == 'Linux' ]]; then
-  antigen bundle chucknorris
   antigen bundle archlinux 
   antigen bundle systemd 
   export PATH="/home/jonny/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
