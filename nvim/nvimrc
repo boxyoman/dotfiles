@@ -102,25 +102,32 @@ set cino+=g0
 call plug#begin('~/.nvim/plugged')
 
 Plug 'SirVer/ultisnips'
-Plug 'vim-scripts/vim-xdc-syntax'
-Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-fugitive'
-Plug 'lervag/vim-latex'
-Plug 'tpope/vim-obsession'
-Plug 'tpope/vim-surround'
-Plug 'simnalamburt/vim-mundo'
-Plug 'junegunn/vim-easy-align'
-Plug 'kien/ctrlp.vim'
-Plug 'rdnetto/YCM-Generator'
-Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
-Plug 'justinmk/vim-sneak'
-Plug 'scrooloose/nerdcommenter'
-Plug 'vim-scripts/a.vim'
 
-Plug 'airblade/vim-gitgutter'
-Plug 'Raimondi/delimitMate'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'bling/vim-airline'
+Plug 'vim-scripts/vim-xdc-syntax'
+Plug 'lervag/vim-latex'
+
+Plug 'scrooloose/nerdtree'
+Plug 'kien/ctrlp.vim'
+Plug 'vim-scripts/a.vim'
+
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+Plug 'tpope/vim-obsession'
+Plug 'Raimondi/delimitMate'
+Plug 'tpope/vim-surround'
+Plug 'simnalamburt/vim-mundo'
+
+Plug 'rdnetto/YCM-Generator'
+Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
+" Can't seem to get this to work
+" Plug 'critiqjo/lldb.nvim'
+
+Plug 'justinmk/vim-sneak'
+Plug 'junegunn/vim-easy-align'
+Plug 'scrooloose/nerdcommenter'
 
 call plug#end()
 
