@@ -117,13 +117,15 @@ Plug 'justinmk/vim-sneak'
 Plug 'scrooloose/nerdcommenter'
 Plug 'vim-scripts/a.vim'
 
+Plug 'airblade/vim-gitgutter'
+Plug 'Raimondi/delimitMate'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'bling/vim-airline'
 
 call plug#end()
 
 " Theme Stuff
-let g:airline_theme='kalisi'
+let g:airline_theme='luna'
 set t_Co=256
 set laststatus=2
 let g:airline_powerline_fonts = 1
@@ -140,14 +142,15 @@ let g:cpp_class_scope_highlight = 1
 "YouCompleteMe
 let g:ycm_confirm_extra_conf = 0
 nnoremap yd :YcmCompleter GoTo<CR>
-nnoremap yg :YcmCompleter GetType<CR>
-nnoremap yp :YcmCompleter GetParent<CR>
+nnoremap ygt :YcmCompleter GetType<CR>
+nnoremap ygp :YcmCompleter GetParent<CR>
+nnoremap yc :YcmDiags<CR>
 let g:Show_diagnostics_ui = 1 
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_add_preview_to_completeopt = 1
 
 "UltiSnip
-let g:UltiSnipsSnippetsDir    = '~/.vim/UltiSnips'
+let g:UltiSnipsSnippetsDir    = '~/.nvim/UltiSnips'
 let g:UltiSnipsExpandTrigger  = "<c-j>"
 let g:UltiJumpForwardTrigger  = "<c-j>"
 let g:UltiJumpBackwardTrigger = "<c-s-j>"
@@ -162,6 +165,14 @@ map ga <Plug>(EasyAlign)
 nnoremap <leader>u :GundoToggle<CR>
 
 " set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
+function! GetByte()
+  let byte = line2byte( line( "." ) ) + col( "." ) - 1
+  return byte
+endfunction
+" Get the current byte of the character under the cursor
+" To be used with clang-replace
+command GetByte echo GetByte()
 
 " Reload vimrc upon save. 
 augroup myvimrc
