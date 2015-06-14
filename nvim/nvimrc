@@ -105,6 +105,7 @@ Plug 'SirVer/ultisnips'
 
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'bling/vim-airline'
+Plug 'ajh17/Spacegray.vim'
 Plug 'vim-scripts/vim-xdc-syntax'
 Plug 'lervag/vim-latex'
 
@@ -132,6 +133,7 @@ Plug 'scrooloose/nerdcommenter'
 call plug#end()
 
 " Theme Stuff
+colorscheme spacegray
 let g:airline_theme='luna'
 set t_Co=256
 set laststatus=2
