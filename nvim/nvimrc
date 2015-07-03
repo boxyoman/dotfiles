@@ -1,5 +1,12 @@
+let s:uname = ""
+if has("unix")
+  let s:uname = substitute(system("uname"), '\n', '', '')
+endif
+
 " Change Leader
 let mapleader = ","
+
+let g:python_host_prog = '/usr/local/bin/python'
 
 " Local .vimrc
 set exrc
@@ -47,7 +54,7 @@ set textwidth=79
 set formatoptions=tqcnw1
 set colorcolumn=80
 
-" some remapping
+" Moving
 nnoremap j gj
 nnoremap k gk
 inoremap jk <ESC>
@@ -56,6 +63,9 @@ nnoremap <c-y> 3<c-y>
 
 " Quick Macro
 nnoremap Q @q
+
+" Sudo save
+cmap w!! w !sudo /usr/bin/tee > /dev/null %
 
 " Easy Copy and paste from clip board
 nnoremap <leader>p "+p
@@ -69,14 +79,13 @@ vnoremap <leader>p "+p
 nnoremap <leader>w <C-w>n<C-w>L
 nnoremap <leader><leader> <c-w><c-w>
 nnoremap <c-w>n :vnew<cr>
-cmap w!! w !sudo /usr/bin/tee > /dev/null %
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
 " some file specific stuff
 au BufReadPost,BufRead *.md set filetype=markdown
 
 " Invisable Characters
-nmap <leader>l :set list!<CR>
+nnoremap <leader>l :set list!<CR>
 set listchars=tab:▸\ ,eol:¬
 
 "Invisible character colors 
@@ -103,6 +112,11 @@ call plug#begin('~/.nvim/plugged')
 
 Plug 'SirVer/ultisnips'
 
+" This program is Mac only
+if s:uname == "Darwin"
+  Plug 'rizzatti/dash.vim'
+endif
+
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'bling/vim-airline'
 Plug 'ajh17/Spacegray.vim'
@@ -123,8 +137,9 @@ Plug 'simnalamburt/vim-mundo'
 
 Plug 'rdnetto/YCM-Generator'
 Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
+
 " Can't seem to get this to work
-" Plug 'critiqjo/lldb.nvim'
+"Plug 'critiqjo/lldb.nvim'
 
 Plug 'justinmk/vim-sneak'
 Plug 'junegunn/vim-easy-align'
@@ -167,13 +182,16 @@ let g:UltiJumpBackwardTrigger = "<c-s-j>"
 " NERDTree
 nnoremap <leader>o :NERDTreeToggle<CR>
 
+" Dash Search
+if s:uname == "Darwin"
+  nmap <silent> <s-k> <Plug>DashSearch
+endif
+
 " Easy Align
 map ga <Plug>(EasyAlign)
 
 " Gundo
 nnoremap <leader>u :GundoToggle<CR>
-
-" set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 function! GetByte()
   let byte = line2byte( line( "." ) ) + col( "." ) - 1

@@ -36,6 +36,7 @@ antigen bundle sharat87/autoenv
 antigen bundle hchbaw/opp.zsh
 antigen bundle tarruda/zsh-autosuggestions
 antigen bundle chucknorris
+antigen bundle cabal
 
 # Theme
 antigen theme pygmalion
