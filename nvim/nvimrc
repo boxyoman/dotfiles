@@ -74,6 +74,7 @@ nnoremap <leader>y "+y
 nnoremap <leader>Y "+Y
 vnoremap <leader>y "+y
 vnoremap <leader>p "+p
+nnoremap Y y$
 
 " Window mappings
 nnoremap <leader>w <C-w>n<C-w>L
@@ -122,6 +123,7 @@ Plug 'bling/vim-airline'
 Plug 'ajh17/Spacegray.vim'
 Plug 'vim-scripts/vim-xdc-syntax'
 Plug 'lervag/vim-latex'
+Plug 'kballard/vim-swift'
 
 Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
@@ -131,12 +133,12 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 Plug 'tpope/vim-obsession'
-Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-surround'
 Plug 'simnalamburt/vim-mundo'
 
 Plug 'rdnetto/YCM-Generator'
 Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
+Plug 'scrooloose/syntastic'
 
 " Can't seem to get this to work
 "Plug 'critiqjo/lldb.nvim'

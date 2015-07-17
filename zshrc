@@ -50,6 +50,8 @@ if [[ $CURRENT_OS == 'OS X' ]]; then
   antigen bundle macports
   antigen bundle brew
   export PATH="/usr/local/opt/llvm/bin:/opt/local/bin":$PATH
+  # Tab width = 2
+  tabs -2
 elif [[ $CURRENT_OS == 'Linux' ]]; then
   antigen bundle archlinux 
   antigen bundle systemd 
