@@ -59,6 +59,8 @@ elif [[ $CURRENT_OS == 'Linux' ]]; then
 fi
 
 alias vim=nvim
+# because I always forget to do this
+alias make="make -j4"
 export EDITOR=nvim
 antigen apply
 
