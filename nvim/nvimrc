@@ -3,10 +3,12 @@ if has("unix")
   let s:uname = substitute(system("uname"), '\n', '', '')
 endif
 
+if s:uname == "Darwin"
+  let g:python_host_prog = '/usr/local/bin/python'
+endif
+
 " Change Leader
 let mapleader = ","
-
-let g:python_host_prog = '/usr/local/bin/python'
 
 " Local .vimrc
 set exrc
