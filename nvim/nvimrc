@@ -98,7 +98,8 @@ nnoremap <leader>bn :bn<cr>
 nnoremap <leader>bp :bp<cr>
 
 " Open new tab with terminal
-nnoremap <leader>t :tabnew<cr>:term<cr>
+nnoremap <leader>tw <C-w>n<C-w>L:term<cr>
+nnoremap <leader>tt :tabnew<cr>:term<cr>
 
 " terminal mode
 tmap <leader><leader> <c-\><c-n><leader><leader>
@@ -137,7 +138,7 @@ Plug 'tpope/vim-surround'
 Plug 'simnalamburt/vim-mundo'
 
 Plug 'rdnetto/YCM-Generator'
-Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
+Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}
 Plug 'scrooloose/syntastic'
 
 " Can't seem to get this to work
