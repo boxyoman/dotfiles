@@ -5,6 +5,7 @@ endif
 
 if s:uname == "Darwin"
   let g:python_host_prog = '/usr/local/bin/python'
+  let $RUST_SRC_PATH = '/Users/Jonny/Developer/home/computer/rust/rust/src'
 endif
 
 " Change Leader
@@ -124,13 +125,17 @@ endif
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'bling/vim-airline'
 Plug 'ajh17/Spacegray.vim'
+
 Plug 'vim-scripts/vim-xdc-syntax'
 Plug 'lervag/vim-latex'
 Plug 'kballard/vim-swift'
+Plug 'rust-lang/rust.vim'
 
 Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
 Plug 'vim-scripts/a.vim'
+
+Plug 'critiqjo/lldb.nvim'
 
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -144,6 +149,7 @@ if s:uname == "Darwin"
 endif
 Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
 Plug 'scrooloose/syntastic'
+Plug 'racer-rust/vim-racer', {'do': 'cargo build --release'}
 
 " Can't seem to get this to work
 "Plug 'critiqjo/lldb.nvim'
@@ -169,6 +175,9 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*/build/*,*/STL/*
 
 " C++ highighting
 let g:cpp_class_scope_highlight = 1
+
+" Rust
+let g:rust_recommended_style = 0
 
 "YouCompleteMe
 let g:ycm_confirm_extra_conf = 0
