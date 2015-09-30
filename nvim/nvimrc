@@ -139,8 +139,10 @@ Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
 Plug 'simnalamburt/vim-mundo'
 
-Plug 'rdnetto/YCM-Generator'
-Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}
+if s:uname == "Darwin"
+  Plug 'rdnetto/YCM-Generator'
+endif
+Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
 Plug 'scrooloose/syntastic'
 
 " Can't seem to get this to work
