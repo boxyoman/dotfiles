@@ -136,8 +136,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
 Plug 'vim-scripts/a.vim'
 
-Plug 'critiqjo/lldb.nvim'
-
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
@@ -150,6 +148,11 @@ if s:uname == "Darwin"
 endif
 Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
 Plug 'scrooloose/syntastic'
+
+" Can't seem to get this to work
+if s:uname == "Linux"
+  Plug 'critiqjo/lldb.nvim'
+endif
 
 Plug 'justinmk/vim-sneak'
 Plug 'junegunn/vim-easy-align'
