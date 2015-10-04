@@ -147,7 +147,6 @@ Plug 'simnalamburt/vim-mundo'
 Plug 'rdnetto/YCM-Generator'
 Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}
 Plug 'scrooloose/syntastic'
-Plug 'racer-rust/vim-racer', {'do': 'cargo build --release'}
 
 " Can't seem to get this to work
 "Plug 'critiqjo/lldb.nvim'
