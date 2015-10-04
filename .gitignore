@@ -2,3 +2,4 @@ nvim/plugged
 nvim/spell
 nvim/undo
 *.log
+*.pyc

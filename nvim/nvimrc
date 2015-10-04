@@ -29,6 +29,7 @@ set visualbell
 set cursorline
 set ttyfast
 set relativenumber
+set number
 set undofile
 set undodir=~/.nvim/undo
 set undolevels=1000
@@ -149,10 +150,6 @@ if s:uname == "Darwin"
 endif
 Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
 Plug 'scrooloose/syntastic'
-Plug 'racer-rust/vim-racer', {'do': 'cargo build --release'}
-
-" Can't seem to get this to work
-"Plug 'critiqjo/lldb.nvim'
 
 Plug 'justinmk/vim-sneak'
 Plug 'junegunn/vim-easy-align'
