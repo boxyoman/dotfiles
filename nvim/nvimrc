@@ -5,7 +5,6 @@ endif
 
 if s:uname == "Darwin"
   let g:python_host_prog = '/usr/local/bin/python'
-  let $RUST_SRC_PATH = '/Users/Jonny/Developer/home/computer/rust/rust/src'
 endif
 
 " Change Leader
@@ -23,20 +22,22 @@ set expandtab
 
 " random settings
 set encoding=utf-8
+set spelllang=en_us
 set showmode
 set showcmd
 set visualbell
+
 set cursorline
-set ttyfast
 set relativenumber
 set number
+set ruler
+
+" undo setting
 set undofile
 set undodir=~/.nvim/undo
 set undolevels=1000
 set undoreload=10000
-set ruler
 set hidden
-set spelllang=en_us
 au FocusLost * :wa
 set winaltkeys=no
 
@@ -126,6 +127,7 @@ endif
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'bling/vim-airline'
 Plug 'ajh17/Spacegray.vim'
+Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'vim-scripts/vim-xdc-syntax'
 Plug 'lervag/vim-latex'
@@ -167,11 +169,19 @@ set t_Co=256
 set laststatus=2
 let g:airline_powerline_fonts = 1
 
+" Indent-Guide 
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
+let g:indent_guides_enable_on_vim_startup = 1
+
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+
 " CTRlp
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'a'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*/build/*,*/STL/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*/build/*,*/STL/*,*/target/*,*/Debug/*
 
 " C++ highighting
 let g:cpp_class_scope_highlight = 1
@@ -216,6 +226,9 @@ endfunction
 " Get the current byte of the character under the cursor
 " To be used with clang-replace
 command GetByte echo GetByte()
+
+" Open help vertially
+autocmd FileType help wincmd L
 
 " Reload vimrc upon save. 
 augroup myvimrc
