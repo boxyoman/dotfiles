@@ -27,6 +27,7 @@ antigen use oh-my-zsh
 
 # Plugins
 antigen bundle git
+antigen bundle git-flow
 antigen bundle wd 
 antigen bundle screen 
 antigen bundle vi-mode 
@@ -37,6 +38,7 @@ antigen bundle hchbaw/opp.zsh
 antigen bundle tarruda/zsh-autosuggestions
 antigen bundle chucknorris
 antigen bundle cabal
+antigen bundle vagrant
 
 # Theme
 antigen theme pygmalion

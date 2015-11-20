@@ -115,7 +115,7 @@ set cino=N-s
 set cino+=g0
 
 " vim-plug, some plugin manager
-call plug#begin('~/.nvim/plugged')
+call plug#begin('~/dotfile/nvim/plugged')
 
 Plug 'SirVer/ultisnips'
 
@@ -133,6 +133,7 @@ Plug 'vim-scripts/vim-xdc-syntax'
 Plug 'lervag/vim-latex'
 Plug 'kballard/vim-swift'
 Plug 'rust-lang/rust.vim'
+Plug 'leafgarland/typescript-vim'
 
 Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
@@ -145,9 +146,6 @@ Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
 Plug 'simnalamburt/vim-mundo'
 
-if s:uname == "Darwin"
-  Plug 'rdnetto/YCM-Generator'
-endif
 Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
 Plug 'scrooloose/syntastic'
 
@@ -158,6 +156,7 @@ endif
 
 Plug 'justinmk/vim-sneak'
 Plug 'junegunn/vim-easy-align'
+Plug 'dhruvasagar/vim-table-mode'
 Plug 'scrooloose/nerdcommenter'
 
 call plug#end()
@@ -181,7 +180,8 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'a'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*/build/*,*/STL/*,*/target/*,*/Debug/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*/build/*,*/STL/*,*/target/*,*/Debug/*,*/node_modules/*,*/bower_components/*
+
 
 " C++ highighting
 let g:cpp_class_scope_highlight = 1
