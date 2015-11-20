@@ -115,7 +115,7 @@ set cino=N-s
 set cino+=g0
 
 " vim-plug, some plugin manager
-call plug#begin('~/dotfile/nvim/plugged')
+call plug#begin('~/dotfile/nvim/plugged/')
 
 Plug 'SirVer/ultisnips'
 
