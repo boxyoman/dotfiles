@@ -27,13 +27,13 @@ Plug 'ajh17/Spacegray.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'vim-scripts/vim-xdc-syntax'
-Plug 'lervag/vim-latex'
+Plug 'lervag/vim-latex', {'for': 'latex'}
 Plug 'kballard/vim-swift'
 Plug 'rust-lang/rust.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
 
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'kien/ctrlp.vim'
 Plug 'vim-scripts/a.vim'
 
@@ -43,13 +43,12 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'simnalamburt/vim-mundo'
+Plug 'simnalamburt/vim-mundo', {'on': 'GundoToggle'}
 
 Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
 Plug 'benekastah/neomake', {'do': 'npm -g jshint'}
-Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
-"Plug 'scrooloose/syntastic'
-Plug 'racer-rust/vim-racer'
+Plug 'ternjs/tern_for_vim', {'do': 'npm install', 'for': 'javascript'}
+Plug 'racer-rust/vim-racer', {'for': 'rust'}
 
 " Can't seem to get this to work
 if s:uname == "Linux"
@@ -58,7 +57,7 @@ endif
 
 Plug 'justinmk/vim-sneak'
 Plug 'junegunn/vim-easy-align'
-Plug 'dhruvasagar/vim-table-mode'
+Plug 'dhruvasagar/vim-table-mode', {'on': 'TableModeEnable'}
 Plug 'scrooloose/nerdcommenter'
 
 call plug#end()
