@@ -10,6 +10,125 @@ endif
 " Change Leader
 let mapleader = ","
 
+" vim-plug, some plugin manager
+call plug#begin('~/dotfiles/nvim/plugged/')
+
+Plug 'SirVer/ultisnips'
+Plug 'embear/vim-localvimrc'
+
+" This program is Mac only
+if s:uname == "Darwin"
+  Plug 'rizzatti/dash.vim'
+endif
+
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'bling/vim-airline'
+Plug 'ajh17/Spacegray.vim'
+Plug 'nathanaelkane/vim-indent-guides'
+
+Plug 'vim-scripts/vim-xdc-syntax'
+Plug 'lervag/vim-latex'
+Plug 'kballard/vim-swift'
+Plug 'rust-lang/rust.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'pangloss/vim-javascript'
+
+Plug 'scrooloose/nerdtree'
+Plug 'kien/ctrlp.vim'
+Plug 'vim-scripts/a.vim'
+
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'simnalamburt/vim-mundo'
+
+Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
+Plug 'benekastah/neomake', {'do': 'npm -g jshint'}
+Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
+"Plug 'scrooloose/syntastic'
+Plug 'racer-rust/vim-racer'
+
+" Can't seem to get this to work
+if s:uname == "Linux"
+  Plug 'critiqjo/lldb.nvim'
+endif
+
+Plug 'justinmk/vim-sneak'
+Plug 'junegunn/vim-easy-align'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'scrooloose/nerdcommenter'
+
+call plug#end()
+
+" Theme Stuff
+colorscheme spacegray
+let g:airline_theme='luna'
+set t_Co=256
+set laststatus=2
+let g:airline_powerline_fonts = 1
+
+" Indent-Guide 
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+
+" CTRlp
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'a'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*/build/*,*/STL/*,*/target/*,*/Debug/*,*/node_modules/*,*/bower_components/*,*/sass/*,*/justinviews/*,*/img/*
+
+" C++ highighting
+let g:cpp_class_scope_highlight = 1
+
+" Rust
+let g:rust_recommended_style = 0
+
+" Racer
+let g:racer_cmd = "/Users/Jonny/.cargo/bin/racer"
+if s:uname == "Darwin"
+  let $RUST_SRC_PATH="/Users/Jonny/Developer/home/computer/rust/rust/src/"
+endif
+
+"YouCompleteMe
+let g:ycm_confirm_extra_conf = 0
+nnoremap yd :YcmCompleter GoTo<CR>
+nnoremap ygt :YcmCompleter GetType<CR>
+nnoremap ygp :YcmCompleter GetParent<CR>
+nnoremap yc :YcmDiags<CR>
+let g:Show_diagnostics_ui = 1 
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_add_preview_to_completeopt = 1
+
+"Neomake
+let g:neomake_javascript_enabled_makers = ['jshint']
+autocmd! BufWritePost * Neomake
+
+"UltiSnip
+let g:UltiSnipsSnippetsDir    = '~/.nvim/UltiSnips'
+let g:UltiSnipsExpandTrigger  = "<c-j>"
+let g:UltiJumpForwardTrigger  = "<c-j>"
+let g:UltiJumpBackwardTrigger = "<c-s-j>"
+
+" NERDTree
+nnoremap <leader>o :NERDTreeToggle<CR>
+
+" Dash Search
+if s:uname == "Darwin"
+  nmap <silent> <s-k> <Plug>DashSearch
+endif
+
+" Easy Align
+map ga <Plug>(EasyAlign)
+
+" Gundo
+nnoremap <leader>u :GundoToggle<CR>
+
 " Local .vimrc
 set exrc
 set secure
@@ -103,8 +222,8 @@ nnoremap <leader>bn :bn<cr>
 nnoremap <leader>bp :bp<cr>
 
 " Open new tab with terminal
-nnoremap <leader>tw <C-w>n<C-w>L:term<cr>
-nnoremap <leader>tt :tabnew<cr>:term<cr>
+nnoremap <leader>tnw <C-w>n<C-w>L:term<cr>
+nnoremap <leader>tnt :tabnew<cr>:term<cr>
 
 " terminal mode
 tmap <leader><leader> <c-\><c-n><leader><leader>
@@ -114,110 +233,7 @@ tmap gt <c-\><c-n>gt
 set cino=N-s
 set cino+=g0
 
-" vim-plug, some plugin manager
-call plug#begin('~/dotfile/nvim/plugged/')
 
-Plug 'SirVer/ultisnips'
-
-" This program is Mac only
-if s:uname == "Darwin"
-  Plug 'rizzatti/dash.vim'
-endif
-
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'bling/vim-airline'
-Plug 'ajh17/Spacegray.vim'
-Plug 'nathanaelkane/vim-indent-guides'
-
-Plug 'vim-scripts/vim-xdc-syntax'
-Plug 'lervag/vim-latex'
-Plug 'kballard/vim-swift'
-Plug 'rust-lang/rust.vim'
-Plug 'leafgarland/typescript-vim'
-
-Plug 'scrooloose/nerdtree'
-Plug 'kien/ctrlp.vim'
-Plug 'vim-scripts/a.vim'
-
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-
-Plug 'tpope/vim-obsession'
-Plug 'tpope/vim-surround'
-Plug 'simnalamburt/vim-mundo'
-
-Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
-Plug 'scrooloose/syntastic'
-
-" Can't seem to get this to work
-if s:uname == "Linux"
-  Plug 'critiqjo/lldb.nvim'
-endif
-
-Plug 'justinmk/vim-sneak'
-Plug 'junegunn/vim-easy-align'
-Plug 'dhruvasagar/vim-table-mode'
-Plug 'scrooloose/nerdcommenter'
-
-call plug#end()
-
-" Theme Stuff
-colorscheme spacegray
-let g:airline_theme='luna'
-set t_Co=256
-set laststatus=2
-let g:airline_powerline_fonts = 1
-
-" Indent-Guide 
-let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
-let g:indent_guides_enable_on_vim_startup = 1
-
-let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
-
-" CTRlp
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'a'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*/build/*,*/STL/*,*/target/*,*/Debug/*,*/node_modules/*,*/bower_components/*
-
-
-" C++ highighting
-let g:cpp_class_scope_highlight = 1
-
-" Rust
-let g:rust_recommended_style = 0
-
-"YouCompleteMe
-let g:ycm_confirm_extra_conf = 0
-nnoremap yd :YcmCompleter GoTo<CR>
-nnoremap ygt :YcmCompleter GetType<CR>
-nnoremap ygp :YcmCompleter GetParent<CR>
-nnoremap yc :YcmDiags<CR>
-let g:Show_diagnostics_ui = 1 
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_add_preview_to_completeopt = 1
-
-"UltiSnip
-let g:UltiSnipsSnippetsDir    = '~/.nvim/UltiSnips'
-let g:UltiSnipsExpandTrigger  = "<c-j>"
-let g:UltiJumpForwardTrigger  = "<c-j>"
-let g:UltiJumpBackwardTrigger = "<c-s-j>"
-
-" NERDTree
-nnoremap <leader>o :NERDTreeToggle<CR>
-
-" Dash Search
-if s:uname == "Darwin"
-  nmap <silent> <s-k> <Plug>DashSearch
-endif
-
-" Easy Align
-map ga <Plug>(EasyAlign)
-
-" Gundo
-nnoremap <leader>u :GundoToggle<CR>
 
 function! GetByte()
   let byte = line2byte( line( "." ) ) + col( "." ) - 1
