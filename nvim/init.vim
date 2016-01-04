@@ -21,22 +21,27 @@ if s:uname == "Darwin"
   Plug 'rizzatti/dash.vim'
 endif
 
+"Colorfully stuff
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'bling/vim-airline'
 Plug 'ajh17/Spacegray.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 
+" Syntax stuff
 Plug 'vim-scripts/vim-xdc-syntax'
 Plug 'lervag/vim-latex', {'for': 'latex'}
 Plug 'kballard/vim-swift'
 Plug 'rust-lang/rust.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
+Plug 'vhda/verilog_systemverilog.vim'
 
+" File finding stuff
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'kien/ctrlp.vim'
 Plug 'vim-scripts/a.vim'
 
+" Git stuff
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
@@ -45,6 +50,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'simnalamburt/vim-mundo', {'on': 'GundoToggle'}
 
+" Lints and completers
 Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
 Plug 'benekastah/neomake', {'do': 'npm -g jshint'}
 Plug 'ternjs/tern_for_vim', {'do': 'npm install', 'for': 'javascript'}
@@ -55,6 +61,7 @@ if s:uname == "Linux"
   Plug 'critiqjo/lldb.nvim'
 endif
 
+" Random
 Plug 'justinmk/vim-sneak'
 Plug 'junegunn/vim-easy-align'
 Plug 'dhruvasagar/vim-table-mode', {'on': 'TableModeEnable'}
@@ -127,6 +134,9 @@ map ga <Plug>(EasyAlign)
 
 " Gundo
 nnoremap <leader>u :GundoToggle<CR>
+
+" Verilog
+let b:verilog_indent_modules = 1
 
 " Local .vimrc
 set exrc
