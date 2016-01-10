@@ -3,3 +3,4 @@ nvim/spell
 nvim/undo
 *.log
 *.pyc
+*.netrwhist

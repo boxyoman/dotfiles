@@ -52,10 +52,8 @@ Plug 'tpope/vim-repeat'
 Plug 'simnalamburt/vim-mundo', {'on': 'GundoToggle'}
 
 " Lints and completers
-Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
+Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer --racer-completer --tern-completer'}
 Plug 'benekastah/neomake', {'do': 'npm -g jshint'}
-Plug 'ternjs/tern_for_vim', {'do': 'npm install', 'for': 'javascript'}
-Plug 'racer-rust/vim-racer', {'for': 'rust'}
 
 " Can't seem to get this to work
 if s:uname == "Linux"
@@ -111,9 +109,10 @@ nnoremap yc :YcmDiags<CR>
 let g:Show_diagnostics_ui = 1 
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_rust_src_path = "/Users/Jonny/Developer/home/computer/rust/rust/src/"
 
 "Neomake
-let g:neomake_javascript_enabled_makers = ['jshint']
+let g:neomake_javascript_enabled_makers = ['jshint, tsc']
 autocmd! BufWritePost * Neomake
 
 "UltiSnip
