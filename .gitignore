@@ -4,3 +4,5 @@ nvim/undo
 *.log
 *.pyc
 *.netrwhist
+fish/fish_history
+fish/*d.*
