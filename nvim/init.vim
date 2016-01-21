@@ -53,7 +53,7 @@ Plug 'simnalamburt/vim-mundo', {'on': 'GundoToggle'}
 
 " Lints and completers
 Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer --racer-completer --tern-completer'}
-Plug 'benekastah/neomake', {'do': 'npm -g jshint'}
+Plug 'benekastah/neomake', {'do': 'npm install -g jshint'}
 
 " Can't seem to get this to work
 if s:uname == "Linux"
@@ -112,7 +112,8 @@ let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_rust_src_path = "/Users/Jonny/Developer/home/computer/rust/rust/src/"
 
 "Neomake
-let g:neomake_javascript_enabled_makers = ['jshint, tsc']
+let g:neomake_javascript_enabled_makers = ['jshint']
+let g:neomake_typescript_enabled_makers = ['tsc']
 autocmd! BufWritePost * Neomake
 
 "UltiSnip
