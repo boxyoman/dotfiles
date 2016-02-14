@@ -24,12 +24,13 @@ endif
 "Colorfully stuff
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'ajh17/Spacegray.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 
 " Syntax stuff
 Plug 'vim-scripts/vim-xdc-syntax'
-Plug 'lervag/vim-latex', {'for': 'latex'}
+Plug 'lervag/vim-latex'
 Plug 'kballard/vim-swift'
 Plug 'rust-lang/rust.vim'
 Plug 'leafgarland/typescript-vim'
@@ -53,7 +54,7 @@ Plug 'simnalamburt/vim-mundo', {'on': 'GundoToggle'}
 
 " Lints and completers
 Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer --racer-completer --tern-completer'}
-Plug 'benekastah/neomake', {'do': 'npm install -g jshint'}
+Plug 'benekastah/neomake'
 
 " Can't seem to get this to work
 if s:uname == "Linux"
@@ -103,6 +104,7 @@ endif
 "YouCompleteMe
 let g:ycm_confirm_extra_conf = 0
 nnoremap yd :YcmCompleter GoTo<CR>
+nnoremap ydd :YcmCompleter GoToDefinition<CR>
 nnoremap ygt :YcmCompleter GetType<CR>
 nnoremap ygp :YcmCompleter GetParent<CR>
 nnoremap yc :YcmDiags<CR>
