@@ -53,6 +53,7 @@ Plug 'simnalamburt/vim-mundo', {'on': 'GundoToggle'}
 
 " Lints and completers
 Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer --racer-completer --tern-completer'}
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'benekastah/neomake', {'do': 'npm install -g jshint'}
 
 " Can't seem to get this to work
