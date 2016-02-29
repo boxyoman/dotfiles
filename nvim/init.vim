@@ -119,7 +119,7 @@ let g:neomake_typescript_enabled_makers = ['tsc']
 autocmd! BufWritePost * Neomake
 
 "UltiSnip
-let g:UltiSnipsSnippetsDir    = '~/.nvim/UltiSnips'
+let g:UltiSnipsSnippetsDir    = '~/dotfiles/nvim/UltiSnips'
 let g:UltiSnipsExpandTrigger  = "<c-j>"
 let g:UltiJumpForwardTrigger  = "<c-j>"
 let g:UltiJumpBackwardTrigger = "<c-s-j>"
