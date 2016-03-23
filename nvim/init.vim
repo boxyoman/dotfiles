@@ -50,7 +50,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'simnalamburt/vim-mundo', {'on': 'GundoToggle'}
+Plug 'simnalamburt/vim-mundo', {'on': 'MundoToggle'}
 
 " Lints and completers
 Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer --racer-completer --tern-completer'}
@@ -136,7 +136,7 @@ endif
 map ga <Plug>(EasyAlign)
 
 " Gundo
-nnoremap <leader>u :GundoToggle<CR>
+nnoremap <leader>u :MundoToggle<CR>
 
 " Verilog
 let b:verilog_indent_modules = 1
