@@ -47,14 +47,17 @@ Plug 'vim-scripts/a.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
+" Other
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'simnalamburt/vim-mundo', {'on': 'MundoToggle'}
+Plug 'jalvesaq/Nvim-R'
 
 " Lints and completers
 Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer --racer-completer --tern-completer'}
 Plug 'benekastah/neomake'
+Plug 'vim-scripts/LanguageTool'
 
 " Can't seem to get this to work
 if s:uname == "Linux"
@@ -135,6 +138,9 @@ endif
 " Easy Align
 map ga <Plug>(EasyAlign)
 
+" language tool
+let g:languagetool_jar = "/usr/local/Cellar/languagetool/3.2/libexec/languagetool.jar"
+
 " Gundo
 nnoremap <leader>u :MundoToggle<CR>
 
@@ -186,9 +192,9 @@ nnoremap <leader><space> :noh<cr>
 
 " long lines
 set wrap
-set textwidth=79
+set textwidth=80
 set formatoptions=tqcnw1
-set colorcolumn=80
+set colorcolumn=81
 
 " Moving
 nnoremap j gj
@@ -258,9 +264,9 @@ command GetByte echo GetByte()
 " Open help vertially
 autocmd FileType help wincmd L
 
-" Reload vimrc upon save. 
-augroup myvimrc
+" Reload init.vim upon save. 
+augroup init.vim
   au!
-  au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+  au BufWritePost init.vim so $MYVIMRC 
 augroup END
 
