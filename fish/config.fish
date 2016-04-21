@@ -4,7 +4,7 @@ set fish_bind_mode insert
 alias vim nvim
 alias timeout gtimeout
 
-set EDITOR nvim
+set -Ux EDITOR nvim
 
 switch (uname)
   case Linux
