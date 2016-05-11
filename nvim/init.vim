@@ -64,8 +64,12 @@ if s:uname == "Linux"
   Plug 'critiqjo/lldb.nvim'
 endif
 
-" Random
+" Motions
+Plug 'bkad/CamelCaseMotion'
 Plug 'justinmk/vim-sneak'
+Plug 'b4winckler/vim-angry'
+
+" Random
 Plug 'junegunn/vim-easy-align'
 Plug 'dhruvasagar/vim-table-mode', {'on': 'TableModeEnable'}
 Plug 'scrooloose/nerdcommenter'
@@ -140,6 +144,20 @@ map ga <Plug>(EasyAlign)
 
 " language tool
 let g:languagetool_jar = "/usr/local/Cellar/languagetool/3.2/libexec/languagetool.jar"
+
+" CamelCaseMotion
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> b <Plug>CamelCaseMotion_b
+map <silent> e <Plug>CamelCaseMotion_e
+map <silent> ge <Plug>CamelCaseMotion_ge
+sunmap w
+sunmap b
+sunmap e
+sunmap ge
+omap <silent> iw <Plug>CamelCaseMotion_ib
+xmap <silent> iw <Plug>CamelCaseMotion_ib
+omap <silent> ie <Plug>CamelCaseMotion_ie
+xmap <silent> ie <Plug>CamelCaseMotion_ie
 
 " Gundo
 nnoremap <leader>u :MundoToggle<CR>
