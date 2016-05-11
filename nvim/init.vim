@@ -106,6 +106,8 @@ let g:rust_recommended_style = 0
 let g:racer_cmd = "/Users/Jonny/.cargo/bin/racer"
 if s:uname == "Darwin"
   let $RUST_SRC_PATH="/Users/Jonny/Developer/home/computer/rust/rust/src/"
+elseif s:uname == "Linux"
+  let $RUST_SRC_PATH="/home/jonny/developer/computer/rust/src/"
 endif
 
 "YouCompleteMe
