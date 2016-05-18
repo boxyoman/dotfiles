@@ -14,15 +14,9 @@ let mapleader = ","
 call plug#begin('~/dotfiles/nvim/plugged/')
 
 Plug 'SirVer/ultisnips'
-Plug 'embear/vim-localvimrc'
-
-" This program is Mac only
-if s:uname == "Darwin"
-  Plug 'rizzatti/dash.vim'
-endif
 
 "Colorfully stuff
-Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'octol/vim-cpp-enhanced-highlight', {'for': 'cpp'}
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ajh17/Spacegray.vim'
@@ -32,7 +26,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'vim-scripts/vim-xdc-syntax'
 Plug 'lervag/vim-latex'
 Plug 'kballard/vim-swift'
-Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'dag/vim-fish'
@@ -44,7 +38,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'vim-scripts/a.vim'
 
 " Git stuff
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive', {'on': 'Gstatus'}
 Plug 'airblade/vim-gitgutter'
 
 " Other
@@ -52,17 +46,10 @@ Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'simnalamburt/vim-mundo', {'on': 'MundoToggle'}
-Plug 'jalvesaq/Nvim-R'
 
 " Lints and completers
 Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer --racer-completer --tern-completer'}
 Plug 'benekastah/neomake'
-Plug 'vim-scripts/LanguageTool'
-
-" Can't seem to get this to work
-if s:uname == "Linux"
-  Plug 'critiqjo/lldb.nvim'
-endif
 
 " Motions
 Plug 'bkad/CamelCaseMotion'
@@ -72,7 +59,7 @@ Plug 'b4winckler/vim-angry'
 " Random
 Plug 'junegunn/vim-easy-align'
 Plug 'dhruvasagar/vim-table-mode', {'on': 'TableModeEnable'}
-Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-commentary'
 
 call plug#end()
 
@@ -123,7 +110,7 @@ let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_rust_src_path = "/Users/Jonny/Developer/home/computer/rust/rust/src/"
 
 "Neomake
-let g:neomake_javascript_enabled_makers = ['jshint']
+let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_typescript_enabled_makers = ['tsc']
 autocmd! BufWritePost * Neomake
 
@@ -136,30 +123,18 @@ let g:UltiJumpBackwardTrigger = "<c-s-j>"
 " NERDTree
 nnoremap <leader>o :NERDTreeToggle<CR>
 
-" Dash Search
-if s:uname == "Darwin"
-  nmap <silent> <s-k> <Plug>DashSearch
-endif
-
 " Easy Align
 map ga <Plug>(EasyAlign)
 
-" language tool
-let g:languagetool_jar = "/usr/local/Cellar/languagetool/3.2/libexec/languagetool.jar"
-
 " CamelCaseMotion
-map <silent> w <Plug>CamelCaseMotion_w
-map <silent> b <Plug>CamelCaseMotion_b
-map <silent> e <Plug>CamelCaseMotion_e
-map <silent> ge <Plug>CamelCaseMotion_ge
-sunmap w
-sunmap b
-sunmap e
-sunmap ge
-omap <silent> iw <Plug>CamelCaseMotion_ib
-xmap <silent> iw <Plug>CamelCaseMotion_ib
-omap <silent> ie <Plug>CamelCaseMotion_ie
-xmap <silent> ie <Plug>CamelCaseMotion_ie
+map <silent> gw <Plug>CamelCaseMotion_w
+map <silent> gb <Plug>CamelCaseMotion_b
+map <silent> ge <Plug>CamelCaseMotion_e
+map <silent> gge <Plug>CamelCaseMotion_ge
+omap <silent> igw <Plug>CamelCaseMotion_ib
+xmap <silent> igw <Plug>CamelCaseMotion_ib
+omap <silent> ige <Plug>CamelCaseMotion_ie
+xmap <silent> ige <Plug>CamelCaseMotion_ie
 
 " Gundo
 nnoremap <leader>u :MundoToggle<CR>
@@ -285,8 +260,8 @@ command GetByte echo GetByte()
 autocmd FileType help wincmd L
 
 " Reload init.vim upon save. 
-augroup init.vim
-  au!
-  au BufWritePost init.vim so $MYVIMRC 
-augroup END
+"augroup init.vim
+  "au!
+  "au BufWritePost init.vim so $MYVIMRC 
+"augroup END
 
