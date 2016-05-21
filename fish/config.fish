@@ -10,5 +10,5 @@ switch (uname)
   case Linux
     set -U fish_user_paths /home/jonny/bin /usr/local/sbin /usr/local/bin /usr/bin /usr/bin/site_perl /usr/bin/vendor_perl /usr/bin/core_perl ~/.cargo/bin/ $fish_user_paths
   case Darwin
-    set -U fish_user_paths /usr/local/opt/llvm/bin /opt/local/bin ~/.cargo/bin/ $fish_user_paths
+    set -U fish_user_paths /usr/local/opt/llvm/bin /usr/local/bin ~/.cargo/bin/ $fish_user_paths
 end
