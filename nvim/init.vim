@@ -35,10 +35,9 @@ Plug 'vhda/verilog_systemverilog.vim'
 " File finding stuff
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'kien/ctrlp.vim'
-" Plug 'vim-scripts/a.vim'
 
 " Git stuff
-" Plug 'tpope/vim-fugitive', {'on': 'Gstatus'}
+Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " Other
@@ -120,9 +119,6 @@ let g:UltiJumpBackwardTrigger = "<c-s-j>"
 
 " NERDTree
 nnoremap <leader>o :NERDTreeToggle<CR>
-
-" Easy Align
-map ga <Plug>(EasyAlign)
 
 " CamelCaseMotion
 map <silent> gw <Plug>CamelCaseMotion_w
