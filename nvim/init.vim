@@ -240,15 +240,5 @@ tmap gt <c-\><c-n>gt
 set cino=N-s
 set cino+=g0
 
-
-
-function! GetByte()
-  let byte = line2byte( line( "." ) ) + col( "." ) - 1
-  return byte
-endfunction
-" Get the current byte of the character under the cursor
-" To be used with clang-replace
-command GetByte echo GetByte()
-
 " Open help vertially
 autocmd FileType help wincmd L
