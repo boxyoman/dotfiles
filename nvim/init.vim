@@ -140,10 +140,6 @@ nnoremap <leader>u :MundoToggle<CR>
 " Verilog
 let b:verilog_indent_modules = 1
 
-" Local .vimrc
-set exrc
-set secure
-
 " Tab
 set shiftwidth=2
 set tabstop=2
@@ -256,10 +252,3 @@ command GetByte echo GetByte()
 
 " Open help vertially
 autocmd FileType help wincmd L
-
-" Reload init.vim upon save. 
-"augroup init.vim
-  "au!
-  "au BufWritePost init.vim so $MYVIMRC 
-"augroup END
-
