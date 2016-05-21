@@ -15,14 +15,14 @@ call plug#begin('~/dotfiles/nvim/plugged/')
 
 Plug 'SirVer/ultisnips'
 
-"Colorfully stuff
-Plug 'octol/vim-cpp-enhanced-highlight', {'for': 'cpp'}
+" Colorfully stuff
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ajh17/Spacegray.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 
 " Syntax stuff
+Plug 'octol/vim-cpp-enhanced-highlight', {'for': 'cpp'}
 Plug 'vim-scripts/vim-xdc-syntax'
 Plug 'lervag/vim-latex'
 Plug 'kballard/vim-swift'
@@ -35,10 +35,10 @@ Plug 'vhda/verilog_systemverilog.vim'
 " File finding stuff
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'kien/ctrlp.vim'
-Plug 'vim-scripts/a.vim'
+" Plug 'vim-scripts/a.vim'
 
 " Git stuff
-Plug 'tpope/vim-fugitive', {'on': 'Gstatus'}
+" Plug 'tpope/vim-fugitive', {'on': 'Gstatus'}
 Plug 'airblade/vim-gitgutter'
 
 " Other
@@ -47,17 +47,15 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'simnalamburt/vim-mundo', {'on': 'MundoToggle'}
 
-" Lints and completers
+" " Lints and completers
 Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer --racer-completer --tern-completer'}
 Plug 'benekastah/neomake'
 
 " Motions
 Plug 'bkad/CamelCaseMotion'
-Plug 'justinmk/vim-sneak'
 Plug 'b4winckler/vim-angry'
 
 " Random
-Plug 'junegunn/vim-easy-align'
 Plug 'dhruvasagar/vim-table-mode', {'on': 'TableModeEnable'}
 Plug 'tpope/vim-commentary'
 
