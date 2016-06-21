@@ -31,6 +31,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'dag/vim-fish'
 Plug 'vhda/verilog_systemverilog.vim'
+Plug 'ElmCast/elm-vim'
 
 " File finding stuff
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
@@ -78,10 +79,13 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'a'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*/build/*,*/STL/*,*/target/*,*/Debug/*,*/node_modules/*,*/bower_components/*,*/sass/*,*/justinviews/*,*/img/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*/build/*,*/STL/*,*/target/*,*/Debug/*,*/node_modules/*,*/bower_components/*,*/justinviews/*,*/img/*,*/typings/*,*/elm-stuff/*,*/public/*
 
 " C++ highighting
 let g:cpp_class_scope_highlight = 1
+
+" elm
+let g:elm_setup_keybindings = 0
 
 " Rust
 let g:rust_recommended_style = 0
@@ -105,6 +109,9 @@ let g:Show_diagnostics_ui = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_rust_src_path = "/Users/Jonny/Developer/home/computer/rust/rust/src/"
+let g:ycm_semantic_triggers = {
+     \ 'elm' : ['.'],
+     \}
 
 "Neomake
 let g:neomake_javascript_enabled_makers = ['eslint']
@@ -235,6 +242,8 @@ tmap gt <c-\><c-n>gt
 " C++ options
 set cino=N-s
 set cino+=g0
+set cino+=l1
+set cino+=b0
 
 " Open help vertially
 autocmd FileType help wincmd L

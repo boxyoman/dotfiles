@@ -6,6 +6,3 @@ nvim/undo
 *.netrwhist
 fish/fish_history
 fish/*d.*
-fish/completions
-fish/functions
-fish/conf.d
