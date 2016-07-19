@@ -213,6 +213,7 @@ nnoremap Y y$
 " Window mappings
 nnoremap <leader>w <C-w>n<C-w>L
 nnoremap <leader><leader> <c-w><c-w>
+nnoremap <leader>. <c-w><c-h>
 nnoremap <c-w>n :vnew<cr>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
