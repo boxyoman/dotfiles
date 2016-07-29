@@ -48,7 +48,7 @@ Plug 'tpope/vim-repeat'
 Plug 'simnalamburt/vim-mundo', {'on': 'MundoToggle'}
 
 " " Lints and completers
-Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer --racer-completer --tern-completer'}
+Plug 'Valloric/YouCompleteMe', {'do': './install.sh --omnisharp-completer --clang-completer --racer-completer --tern-completer'}
 Plug 'benekastah/neomake'
 
 " Motions
