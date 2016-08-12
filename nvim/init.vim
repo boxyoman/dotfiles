@@ -54,6 +54,10 @@ Plug 'simnalamburt/vim-mundo', {'on': 'MundoToggle'}
 
 " " Lints and completers
 Plug 'Valloric/YouCompleteMe', {'do': './install.sh --omnisharp-completer --clang-completer --racer-completer --tern-completer'}
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'benekastah/neomake'
 
 " Motions
