@@ -1,5 +1,7 @@
 barnybug/docker-fish-completion
 fisherman/getopts
 oh-my-fish/plugin-git-flow
+fisherman/gitignore
+fisherman/spin
 oh-my-fish/plugin-ssh
 fisherman/z
