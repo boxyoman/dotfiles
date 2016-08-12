@@ -19,6 +19,7 @@ Plug 'SirVer/ultisnips'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ajh17/Spacegray.vim'
+Plug 'nanotech/jellybeans.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 
 " Syntax stuff
@@ -32,6 +33,10 @@ Plug 'pangloss/vim-javascript'
 Plug 'dag/vim-fish'
 Plug 'vhda/verilog_systemverilog.vim'
 Plug 'ElmCast/elm-vim'
+
+" Haskell
+Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
+Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 
 " File finding stuff
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
@@ -62,11 +67,15 @@ Plug 'tpope/vim-commentary'
 call plug#end()
 
 " Theme Stuff
-colorscheme spacegray
-let g:airline_theme='luna'
+colorscheme jellybeans
+let g:airline_theme='jellybeans'
 set t_Co=256
 set laststatus=2
-let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline_section_y = ''
+let g:airline_section_z = '%l:%c'
 
 " Indent-Guide 
 let g:indent_guides_auto_colors = 0
@@ -227,10 +236,6 @@ set listchars=tab:▸\ ,eol:¬
 "Invisible character colors 
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
-
-" Buffer Remapping
-nnoremap <leader>bn :bn<cr>
-nnoremap <leader>bp :bp<cr>
 
 " Open new tab with terminal
 nnoremap <leader>tnw <C-w>n<C-w>L:term<cr>
