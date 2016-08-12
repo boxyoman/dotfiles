@@ -6,3 +6,10 @@ nvim/undo
 *.netrwhist
 fish/fish_history
 fish/*d.*
+fish/completions
+fish/conf.d/
+fish/functions/
+!fish/functions/fish_prompt.fish
+!fish/functions/fish_vim_key_bindings.fish
+!fish/functions/git_branch.fish
+!fish/functions/fisher.fish
