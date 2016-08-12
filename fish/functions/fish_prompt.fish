@@ -76,6 +76,6 @@ function fish_prompt --description 'Write out the prompt'
 		)
 	end
 
-	echo -n -s "$mode_str" $normal ' ' (set_color $color_cwd) (prompt_pwd) $normal 
+	echo -n -s $normal ' ' (set_color $color_cwd) (prompt_pwd) $normal 
   echo -n -s (set_color $git_color) (__fish_git_prompt) $normal $prompt_status "> "
 end
