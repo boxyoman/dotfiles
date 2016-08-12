@@ -77,7 +77,7 @@ let g:airline_right_sep=''
 let g:airline_section_y = ''
 let g:airline_section_z = '%l:%c'
 
-" Indent-Guide 
+" Indent-Guide
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
@@ -114,7 +114,7 @@ nnoremap ydd :YcmCompleter GoToDefinition<CR>
 nnoremap ygt :YcmCompleter GetType<CR>
 nnoremap ygp :YcmCompleter GetParent<CR>
 nnoremap yc :YcmDiags<CR>
-let g:Show_diagnostics_ui = 1 
+let g:Show_diagnostics_ui = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_rust_src_path = "/Users/Jonny/Developer/home/computer/rust/rust/src/"
@@ -233,7 +233,7 @@ au BufReadPost,BufRead *.md set filetype=markdown
 nnoremap <leader>l :set list!<CR>
 set listchars=tab:▸\ ,eol:¬
 
-"Invisible character colors 
+"Invisible character colors
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
 
