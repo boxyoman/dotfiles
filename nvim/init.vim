@@ -75,6 +75,7 @@ colorscheme jellybeans
 let g:airline_theme='jellybeans'
 set t_Co=256
 set laststatus=2
+let g:airline_powerline_fonts=0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_left_sep=''
 let g:airline_right_sep=''
@@ -92,7 +93,7 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'a'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*/build/*,*/STL/*,*/target/*,*/Debug/*,*/node_modules/*,*/bower_components/*,*/justinviews/*,*/img/*,*/typings/*,*/elm-stuff/*,*/public/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*/build/*,*/STL/*,*/target/*,*/Debug/*,*/node_modules/*,*/bower_components/*,*/justinviews/*,*/img/*,*/typings/*,*/elm-stuff/*,*/public/*,*/dist/*
 
 " C++ highighting
 let g:cpp_class_scope_highlight = 1
