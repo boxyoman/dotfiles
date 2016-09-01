@@ -258,3 +258,13 @@ set cino+=b0
 
 " Open help vertially
 autocmd FileType help wincmd L
+
+" Bye bye trailing whitespace
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
+autocmd FileType javascript,html,haskell,elm,typescript autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
