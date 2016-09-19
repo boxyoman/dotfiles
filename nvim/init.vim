@@ -33,6 +33,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'dag/vim-fish'
 Plug 'vhda/verilog_systemverilog.vim'
 Plug 'ElmCast/elm-vim'
+Plug 'OrangeT/vim-csharp'
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
@@ -118,6 +119,7 @@ nnoremap yd :YcmCompleter GoTo<CR>
 nnoremap ydd :YcmCompleter GoToDefinition<CR>
 nnoremap ygt :YcmCompleter GetType<CR>
 nnoremap ygp :YcmCompleter GetParent<CR>
+nnoremap ycfi :YcmCompleter FixIt<CR>
 nnoremap yc :YcmDiags<CR>
 let g:Show_diagnostics_ui = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -267,4 +269,5 @@ fun! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 
-autocmd FileType javascript,html,haskell,elm,typescript autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
