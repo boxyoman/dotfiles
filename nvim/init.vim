@@ -32,8 +32,8 @@ Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'dag/vim-fish'
 Plug 'vhda/verilog_systemverilog.vim'
-Plug 'ElmCast/elm-vim'
 Plug 'OrangeT/vim-csharp'
+Plug 'ElmCast/elm-vim'
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
@@ -101,6 +101,7 @@ let g:cpp_class_scope_highlight = 1
 
 " elm
 let g:elm_setup_keybindings = 0
+let g:elm_format_autosave = 1
 
 " Rust
 let g:rust_recommended_style = 0
