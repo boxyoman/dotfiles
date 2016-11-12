@@ -26,7 +26,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'octol/vim-cpp-enhanced-highlight', {'for': 'cpp'}
 Plug 'vim-scripts/vim-xdc-syntax'
 Plug 'lervag/vim-latex'
-Plug 'kballard/vim-swift'
+Plug 'keith/swift.vim'
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
@@ -38,6 +38,12 @@ Plug 'ElmCast/elm-vim'
 " Haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
+
+" F#
+Plug 'fsharp/vim-fsharp', {
+      \ 'for': 'fsharp',
+      \ 'do':  'make fsautocomplete',
+      \}
 
 " File finding stuff
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
