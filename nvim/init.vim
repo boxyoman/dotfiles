@@ -65,6 +65,7 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'Shougo/neco-vim'
 Plug 'benekastah/neomake'
 
 " Motions
@@ -76,6 +77,9 @@ Plug 'dhruvasagar/vim-table-mode', {'on': 'TableModeEnable'}
 Plug 'tpope/vim-commentary'
 
 call plug#end()
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1
 
 " Theme Stuff
 colorscheme jellybeans
