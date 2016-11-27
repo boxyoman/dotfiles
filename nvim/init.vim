@@ -201,7 +201,6 @@ set ruler
 
 " undo setting
 set undofile
-set undodir=~/.nvim/undo
 set undolevels=1000
 set undoreload=10000
 set hidden
