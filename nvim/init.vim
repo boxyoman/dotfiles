@@ -80,6 +80,22 @@ call plug#end()
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
+if !exists('g:deoplete#omni_input_patterns)')
+    let g:deoplete#omni_input_patterns = {}
+endif
+let g:deoplete#omni_input_patterns.fsharp = '\.'
+
+if !exists('g:deoplete#omni_patterns')
+    let g:deoplete#omni_patterns = {}
+endif
+let g:deoplete#omni_patterns.fsharp = '\.'
+
+" Fsharp
+let g:fsharp_completion_helptext = 1
+augroup fsharp
+    au!
+    autocmd FileType fsharp set et ts=4 sw=4
+augroup END
 
 " Theme Stuff
 colorscheme jellybeans
