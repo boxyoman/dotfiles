@@ -58,13 +58,11 @@ Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'simnalamburt/vim-mundo', {'on': 'MundoToggle'}
+Plug 'editorconfig/editorconfig-vim'
 
 " " Lints and completers
 Plug 'Valloric/YouCompleteMe', {'do': './install.sh --omnisharp-completer --clang-completer --racer-completer --tern-completer'}
-function! DoRemote(arg)
-  UpdateRemotePlugins
-endfunction
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neco-vim'
 Plug 'benekastah/neomake'
 
@@ -83,12 +81,33 @@ let g:deoplete#enable_at_startup = 1
 if !exists('g:deoplete#omni_input_patterns)')
     let g:deoplete#omni_input_patterns = {}
 endif
-let g:deoplete#omni_input_patterns.fsharp = '\.'
-
 if !exists('g:deoplete#omni_patterns')
     let g:deoplete#omni_patterns = {}
 endif
+if !exists('g:deoplete#omni#input_patterns')
+    let g:deoplete#omni#input_patterns = {}
+endif
+if !exists('g:deoplete#omni#functions')
+  let g:deoplete#omni#functions = {}
+endif
+if !exists('g:deoplete#omni#sources')
+  let g:deoplete#omni#sources = {}
+  let g:deoplete#omni#sources._ = ['file', 'ultisnips']
+endif
+if !exists('g:deoplete#sources')
+  let g:deoplete#sources = {}
+  let g:deoplete#sources._ = ['file', 'ultisnips']
+endif
+
+" F#
+let g:deoplete#omni_input_patterns.fsharp = '\.'
 let g:deoplete#omni_patterns.fsharp = '\.'
+
+" Elm
+let g:deoplete#omni#functions.elm = ['elm#Complete']
+let g:deoplete#omni#input_patterns.elm = '[^ \t]+'
+let g:deoplete#omni#sources.elm = ['omni'] + g:deoplete#omni#sources._
+
 
 " Fsharp
 let g:fsharp_completion_helptext = 1
@@ -163,9 +182,6 @@ let g:Show_diagnostics_ui = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_rust_src_path = "/Users/Jonny/Developer/home/computer/rust/rust/src/"
-let g:ycm_semantic_triggers = {
-     \ 'elm' : ['.'],
-     \}
 
 "Neomake
 let g:neomake_javascript_enabled_makers = ['eslint']
@@ -247,6 +263,10 @@ nnoremap k gk
 inoremap jk <ESC>
 nnoremap <c-e> 3<c-e>
 nnoremap <c-y> 3<c-y>
+
+" Buffers
+nnoremap <leader>bn :bn<cr>
+nnoremap <leader>bp :bp<cr>
 
 " Quick Macro
 nnoremap Q @q
