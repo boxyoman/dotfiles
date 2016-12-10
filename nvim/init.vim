@@ -18,7 +18,6 @@ Plug 'SirVer/ultisnips'
 " Colorfully stuff
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'ajh17/Spacegray.vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 
@@ -79,43 +78,36 @@ call plug#end()
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
-if !exists('g:deoplete#omni_input_patterns)')
-    let g:deoplete#omni_input_patterns = {}
-endif
-if !exists('g:deoplete#omni_patterns')
-    let g:deoplete#omni_patterns = {}
-endif
-if !exists('g:deoplete#omni#input_patterns')
-    let g:deoplete#omni#input_patterns = {}
-endif
-if !exists('g:deoplete#omni#functions')
-  let g:deoplete#omni#functions = {}
-endif
-if !exists('g:deoplete#omni#sources')
-  let g:deoplete#omni#sources = {}
-  let g:deoplete#omni#sources._ = ['file', 'ultisnips']
-endif
-if !exists('g:deoplete#sources')
-  let g:deoplete#sources = {}
-  let g:deoplete#sources._ = ['file', 'ultisnips']
-endif
+let g:deoplete#omni_input_patterns = {}
+let g:deoplete#omni_patterns = {}
+let g:deoplete#omni#input_patterns = {}
+let g:deoplete#omni#functions = {}
+let g:deoplete#omni#sources = {}
+let g:deoplete#omni#sources._ = ['file', 'ultisnips']
+let g:deoplete#sources = {}
+let g:deoplete#sources._ = ['file', 'ultisnips']
 
 " F#
 let g:deoplete#omni_input_patterns.fsharp = '\.'
 let g:deoplete#omni_patterns.fsharp = '\.'
+let g:fsharp_completion_helptext = 1
+augroup fsharp
+  au!
+  autocmd FileType fsharp set et ts=4 sw=4
+augroup END
+
 
 " Elm
 let g:deoplete#omni#functions.elm = ['elm#Complete']
 let g:deoplete#omni_patterns.elm = '\.'
 let g:deoplete#omni#sources.elm = ['omni'] + g:deoplete#omni#sources._
-
-
-" Fsharp
-let g:fsharp_completion_helptext = 1
-augroup fsharp
-    au!
-    autocmd FileType fsharp set et ts=4 sw=4
+let g:elm_setup_keybindings = 0
+let g:elm_format_autosave = 1
+augroup elm
+  au!
+  autocmd FileType fsharp set et ts=4 sw=4
 augroup END
+
 
 " Theme Stuff
 colorscheme jellybeans
@@ -155,10 +147,6 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*/build/*,*/STL/*,*/target/*,*/Debu
 
 " C++ highighting
 let g:cpp_class_scope_highlight = 1
-
-" elm
-let g:elm_setup_keybindings = 0
-let g:elm_format_autosave = 1
 
 " Rust
 let g:rust_recommended_style = 0
@@ -262,8 +250,8 @@ set colorcolumn=81
 nnoremap j gj
 nnoremap k gk
 inoremap jk <ESC>
-nnoremap <c-e> 3<c-e>
-nnoremap <c-y> 3<c-y>
+nnoremap <c-e> 4<c-e>
+nnoremap <c-y> 4<c-y>
 
 " Buffers
 nnoremap <leader>bn :bn<cr>
