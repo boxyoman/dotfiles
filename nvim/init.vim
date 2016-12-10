@@ -69,6 +69,7 @@ Plug 'benekastah/neomake'
 " Motions
 Plug 'bkad/CamelCaseMotion'
 Plug 'b4winckler/vim-angry'
+Plug 'justinmk/vim-sneak'
 
 " Random
 Plug 'dhruvasagar/vim-table-mode', {'on': 'TableModeEnable'}
@@ -105,7 +106,7 @@ let g:deoplete#omni_patterns.fsharp = '\.'
 
 " Elm
 let g:deoplete#omni#functions.elm = ['elm#Complete']
-let g:deoplete#omni#input_patterns.elm = '[^ \t]+'
+let g:deoplete#omni_patterns.elm = '\.'
 let g:deoplete#omni#sources.elm = ['omni'] + g:deoplete#omni#sources._
 
 
