@@ -60,8 +60,9 @@ Plug 'simnalamburt/vim-mundo', {'on': 'MundoToggle'}
 Plug 'editorconfig/editorconfig-vim'
 
 " " Lints and completers
-Plug 'Valloric/YouCompleteMe', {'do': './install.sh --omnisharp-completer --clang-completer --racer-completer --tern-completer'}
+" Plug 'Valloric/YouCompleteMe', {'do': './install.sh --omnisharp-completer --clang-completer --racer-completer --tern-completer'}
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'ervandew/supertab'
 Plug 'Shougo/neco-vim'
 Plug 'benekastah/neomake'
 
@@ -78,18 +79,31 @@ call plug#end()
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#omni_input_patterns = {}
-let g:deoplete#omni_patterns = {}
-let g:deoplete#omni#input_patterns = {}
-let g:deoplete#omni#functions = {}
-let g:deoplete#omni#sources = {}
-let g:deoplete#omni#sources._ = ['file', 'ultisnips']
-let g:deoplete#sources = {}
-let g:deoplete#sources._ = ['file', 'ultisnips']
 
-" F#
-let g:deoplete#omni_input_patterns.fsharp = '\.'
-let g:deoplete#omni_patterns.fsharp = '\.'
+" if !exists('g:deoplete#omni_input_patterns')
+"   let g:deoplete#omni_input_patterns = {}
+" endif
+" if !exists('g:deoplete#omni_patterns')
+"   let g:deoplete#omni_patterns = {}
+" endif
+" if !exists('g:deoplete#omni#input_patterns')
+"   let g:deoplete#omni#input_patterns = {}
+" endif
+" if !exists('g:deoplete#omni#functions')
+"   let g:deoplete#omni#functions = {}
+" endif
+" if !exists('g:deoplete#omni#sources')
+"   let g:deoplete#omni#sources = {}
+"   let g:deoplete#omni#sources._ = ['file', 'ultisnips']
+" endif
+" if !exists('g:deoplete#sources')
+"   let g:deoplete#sources = {}
+"   let g:deoplete#sources._ = ['file', 'ultisnips']
+" endif
+
+" " F#
+" let g:deoplete#omni_input_patterns.fsharp = '\.'
+" let g:deoplete#omni_patterns.fsharp = '\.'
 let g:fsharp_completion_helptext = 1
 augroup fsharp
   au!
@@ -98,9 +112,9 @@ augroup END
 
 
 " Elm
-let g:deoplete#omni#functions.elm = ['elm#Complete']
-let g:deoplete#omni_patterns.elm = '\.'
-let g:deoplete#omni#sources.elm = ['omni'] + g:deoplete#omni#sources._
+" let g:deoplete#omni#functions.elm = ['elm#Complete']
+" let g:deoplete#omni_patterns.elm = '\.'
+" let g:deoplete#omni#sources.elm = ['omni'] + g:deoplete#omni#sources._
 let g:elm_setup_keybindings = 0
 let g:elm_format_autosave = 1
 augroup elm
@@ -108,6 +122,8 @@ augroup elm
   autocmd FileType fsharp set et ts=4 sw=4
 augroup END
 
+" Supertab
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " Theme Stuff
 colorscheme jellybeans
