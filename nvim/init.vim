@@ -60,7 +60,7 @@ Plug 'simnalamburt/vim-mundo', {'on': 'MundoToggle'}
 Plug 'editorconfig/editorconfig-vim'
 
 " " Lints and completers
-" Plug 'Valloric/YouCompleteMe', {'do': './install.sh --omnisharp-completer --clang-completer --racer-completer --tern-completer'}
+Plug 'Valloric/YouCompleteMe', {'do': './install.sh --omnisharp-completer --clang-completer --racer-completer --tern-completer'}
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ervandew/supertab'
 Plug 'Shougo/neco-vim'
