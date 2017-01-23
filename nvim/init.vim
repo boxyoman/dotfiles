@@ -33,6 +33,7 @@ Plug 'dag/vim-fish'
 Plug 'vhda/verilog_systemverilog.vim'
 Plug 'OrangeT/vim-csharp'
 Plug 'ElmCast/elm-vim'
+Plug 'idris-hackers/idris-vim'
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
