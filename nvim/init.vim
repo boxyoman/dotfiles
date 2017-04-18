@@ -21,6 +21,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'nanotech/jellybeans.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 
+Plug 'jceb/vim-orgmode'
+
 " Syntax stuff
 Plug 'octol/vim-cpp-enhanced-highlight', {'for': 'cpp'}
 Plug 'vim-scripts/vim-xdc-syntax'
@@ -34,10 +36,12 @@ Plug 'vhda/verilog_systemverilog.vim'
 Plug 'OrangeT/vim-csharp'
 Plug 'ElmCast/elm-vim'
 Plug 'idris-hackers/idris-vim'
+Plug 'derekwyatt/vim-scala'
 
 " Haskell
-Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
-Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
+Plug 'neovimhaskell/haskell-vim'
+Plug 'eagletmt/neco-ghc'
+Plug 'eagletmt/ghcmod-vim'
 
 " F#
 Plug 'fsharp/vim-fsharp', {
@@ -61,7 +65,8 @@ Plug 'simnalamburt/vim-mundo', {'on': 'MundoToggle'}
 Plug 'editorconfig/editorconfig-vim'
 
 " " Lints and completers
-Plug 'Valloric/YouCompleteMe', {'do': './install.sh --omnisharp-completer --clang-completer --racer-completer --tern-completer'}
+" Plug 'Valloric/YouCompleteMe'
+" {'do': './install.sh --omnisharp-completer --clang-completer --racer-completer --tern-completer'}
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ervandew/supertab'
 Plug 'Shougo/neco-vim'
@@ -75,53 +80,13 @@ Plug 'justinmk/vim-sneak'
 " Random
 Plug 'dhruvasagar/vim-table-mode', {'on': 'TableModeEnable'}
 Plug 'tpope/vim-commentary'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
 call plug#end()
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
 
-" if !exists('g:deoplete#omni_input_patterns')
-"   let g:deoplete#omni_input_patterns = {}
-" endif
-" if !exists('g:deoplete#omni_patterns')
-"   let g:deoplete#omni_patterns = {}
-" endif
-" if !exists('g:deoplete#omni#input_patterns')
-"   let g:deoplete#omni#input_patterns = {}
-" endif
-" if !exists('g:deoplete#omni#functions')
-"   let g:deoplete#omni#functions = {}
-" endif
-" if !exists('g:deoplete#omni#sources')
-"   let g:deoplete#omni#sources = {}
-"   let g:deoplete#omni#sources._ = ['file', 'ultisnips']
-" endif
-" if !exists('g:deoplete#sources')
-"   let g:deoplete#sources = {}
-"   let g:deoplete#sources._ = ['file', 'ultisnips']
-" endif
-
-" " F#
-" let g:deoplete#omni_input_patterns.fsharp = '\.'
-" let g:deoplete#omni_patterns.fsharp = '\.'
-let g:fsharp_completion_helptext = 1
-augroup fsharp
-  au!
-  autocmd FileType fsharp set et ts=4 sw=4
-augroup END
-
-
-" Elm
-" let g:deoplete#omni#functions.elm = ['elm#Complete']
-" let g:deoplete#omni_patterns.elm = '\.'
-" let g:deoplete#omni#sources.elm = ['omni'] + g:deoplete#omni#sources._
-let g:elm_setup_keybindings = 0
-let g:elm_format_autosave = 1
-augroup elm
-  au!
-  autocmd FileType fsharp set et ts=4 sw=4
-augroup END
 
 " Supertab
 let g:SuperTabDefaultCompletionType = "<c-n>"
@@ -145,16 +110,6 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 
-" NeovimHaskell
-let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
-let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
-let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
-let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
-let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
-let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
-
-" necoghc
-let g:necoghc_enable_detailed_browse = 1
 
 " CTRlp
 let g:ctrlp_map = '<c-p>'
@@ -176,22 +131,23 @@ elseif s:uname == "Linux"
   let $RUST_SRC_PATH="/home/jonny/developer/computer/rust/src/"
 endif
 
-"YouCompleteMe
-let g:ycm_confirm_extra_conf = 0
-nnoremap yd :YcmCompleter GoTo<CR>
-nnoremap ydd :YcmCompleter GoToDefinition<CR>
-nnoremap ygt :YcmCompleter GetType<CR>
-nnoremap ygp :YcmCompleter GetParent<CR>
-nnoremap ycfi :YcmCompleter FixIt<CR>
-nnoremap yc :YcmDiags<CR>
-let g:Show_diagnostics_ui = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_rust_src_path = "/Users/Jonny/Developer/home/computer/rust/rust/src/"
+" "YouCompleteMe
+" let g:ycm_confirm_extra_conf = 0
+" nnoremap yd :YcmCompleter GoTo<CR>
+" nnoremap ydd :YcmCompleter GoToDefinition<CR>
+" nnoremap ygt :YcmCompleter GetType<CR>
+" nnoremap ygp :YcmCompleter GetParent<CR>
+" nnoremap ycfi :YcmCompleter FixIt<CR>
+" nnoremap yc :YcmDiags<CR>
+" let g:Show_diagnostics_ui = 1
+" let g:ycm_autoclose_preview_window_after_insertion = 1
+" let g:ycm_add_preview_to_completeopt = 1
+" let g:ycm_rust_src_path = "/Users/Jonny/Developer/home/computer/rust/rust/src/"
 
 "Neomake
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_typescript_enabled_makers = ['tsc']
+let g:neomake_haskell_enable_makers = ['hlint']
 autocmd! BufWritePost * Neomake
 
 "UltiSnip
