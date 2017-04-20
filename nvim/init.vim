@@ -3,10 +3,6 @@ if has("unix")
   let s:uname = substitute(system("uname"), '\n', '', '')
 endif
 
-if s:uname == "Darwin"
-  let g:python_host_prog = '/usr/local/bin/python'
-endif
-
 " Change Leader
 let mapleader = ","
 
@@ -41,7 +37,8 @@ Plug 'derekwyatt/vim-scala'
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
 Plug 'eagletmt/neco-ghc'
-Plug 'eagletmt/ghcmod-vim'
+" Plug 'eagletmt/ghcmod-vim'
+Plug 'parsonsmatt/intero-neovim'
 
 " F#
 Plug 'fsharp/vim-fsharp', {
@@ -65,8 +62,7 @@ Plug 'simnalamburt/vim-mundo', {'on': 'MundoToggle'}
 Plug 'editorconfig/editorconfig-vim'
 
 " " Lints and completers
-" Plug 'Valloric/YouCompleteMe'
-" {'do': './install.sh --omnisharp-completer --clang-completer --racer-completer --tern-completer'}
+" Plug 'Valloric/YouCompleteMe', {'do': './install.sh --omnisharp-completer --clang-completer --racer-completer --tern-completer'}
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ervandew/supertab'
 Plug 'Shougo/neco-vim'
@@ -131,7 +127,7 @@ elseif s:uname == "Linux"
   let $RUST_SRC_PATH="/home/jonny/developer/computer/rust/src/"
 endif
 
-" "YouCompleteMe
+" " "YouCompleteMe
 " let g:ycm_confirm_extra_conf = 0
 " nnoremap yd :YcmCompleter GoTo<CR>
 " nnoremap ydd :YcmCompleter GoToDefinition<CR>
@@ -143,6 +139,21 @@ endif
 " let g:ycm_autoclose_preview_window_after_insertion = 1
 " let g:ycm_add_preview_to_completeopt = 1
 " let g:ycm_rust_src_path = "/Users/Jonny/Developer/home/computer/rust/rust/src/"
+" let ycm_filetype_blacklist = {
+"       \ 'tagbar' : 1,
+"       \ 'qf' : 1,
+"       \ 'notes' : 1,
+"       \ 'markdown' : 1,
+"       \ 'unite' : 1,
+"       \ 'text' : 1,
+"       \ 'vimwiki' : 1,
+"       \ 'pandoc' : 1,
+"       \ 'infolog' : 1,
+"       \ 'mail' : 1,
+"       \ 'fsharp' : 1,
+"       \ 'haskell' : 1,
+"       \ 'elm' : 1
+"       \}
 
 "Neomake
 let g:neomake_javascript_enabled_makers = ['eslint']

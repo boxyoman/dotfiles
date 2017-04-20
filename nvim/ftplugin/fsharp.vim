@@ -1,5 +1,5 @@
 
-autocmd FileType fsharp set et ts=4 sw=4
+setlocal ts=4 sw=4
 let g:fsharp_completion_helptext = 1
 
 if !exists('g:deoplete#omni_input_patterns')
