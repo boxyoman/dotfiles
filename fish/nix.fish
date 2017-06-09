@@ -10,7 +10,7 @@ if test -n "$HOME" -a -z "$NIX_PATH"
   add-to-path $NIX_LINK/bin $NIX_LINK/sbin
 
   # Subscribe the user to the Nixpkgs channel by default.
-  if [ ! -e $HOME/.nix-channels ]
+  if not test -e $HOME/.nix-channels ;
     echo "https://nixos.org/channels/nixpkgs-unstable nixpkgs" > $HOME/.nix-channels
   end
 
@@ -18,5 +18,6 @@ if test -n "$HOME" -a -z "$NIX_PATH"
   # <nixpkgs> paths work when the user has fetched the Nixpkgs
   # channel.
   set -x NIX_PATH nixpkgs=$HOME/.nix-defexpr/channels/nixpkgs
+  set -xg NIX_SSL_CERT_FILE "$NIX_LINK/etc/ca-bundle.crt"
 
 end
