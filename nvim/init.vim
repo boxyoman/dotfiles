@@ -33,6 +33,8 @@ Plug 'OrangeT/vim-csharp'
 Plug 'ElmCast/elm-vim'
 Plug 'idris-hackers/idris-vim'
 Plug 'derekwyatt/vim-scala'
+Plug 'raichoo/purescript-vim'
+Plug 'frigoeu/psc-ide-vim'
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
@@ -111,7 +113,7 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'a'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*/build/*,*/STL/*,*/target/*,*/Debug/*,*/node_modules/*,*/bower_components/*,*/justinviews/*,*/img/*,*/typings/*,*/elm-stuff/*,*/public/*,*/dist/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*/build/*,*/STL/*,*/target/*,*/Debug/*,*/node_modules/*,*/bower_components/*,*/justinviews/*,*/img/*,*/typings/*,*/elm-stuff/*,*/public/*,*/dist/*,*/output/*
 
 " C++ highighting
 let g:cpp_class_scope_highlight = 1
