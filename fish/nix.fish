@@ -18,6 +18,6 @@ if test -n "$HOME" -a -z "$NIX_PATH"
   # <nixpkgs> paths work when the user has fetched the Nixpkgs
   # channel.
   set -x NIX_PATH nixpkgs=$HOME/.nix-defexpr/channels/nixpkgs
-  set -xg NIX_SSL_CERT_FILE "$NIX_LINK/etc/ca-bundle.crt"
+  set -x NIX_SSL_CERT_FILE "$NIX_LINK/etc/ssl/certs/ca-bundle.crt"
 
 end
