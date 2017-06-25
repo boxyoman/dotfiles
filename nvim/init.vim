@@ -15,6 +15,7 @@ Plug 'SirVer/ultisnips'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'nanotech/jellybeans.vim'
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'jceb/vim-orgmode'
@@ -82,6 +83,24 @@ Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
 call plug#end()
 
+
+if has('nvim') " This way, you can also put this in your plain vim config
+
+	" function which starts a nvim-hs instance with the supplied name
+	function! s:RequireHaskellHost(name)
+		" It is important that the current working directory (cwd) is where
+		" your configuration files are.
+		return jobstart(['stack', 'exec', 'my-nvim-hs', a:name.name], {'rpc': v:true, 'cwd': expand('$HOME') . '/dotfiles/nvim/'})
+	endfunction
+
+	" Register a plugin host that is started when a haskell file is opened
+	call remote#host#Register('haskell', "*.l\?hs", function('s:RequireHaskellHost'))
+
+	" But if you need it for other files as well, you may just start it
+	" forcefully by requiring it
+	let hc=remote#host#Require('haskell')
+endif
+
 " Deoplete
 let g:deoplete#enable_at_startup = 1
 
@@ -90,8 +109,9 @@ let g:deoplete#enable_at_startup = 1
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " Theme Stuff
-colorscheme jellybeans
-let g:airline_theme='jellybeans'
+colorscheme PaperColor
+set background=light
+let g:airline_theme='papercolor'
 set t_Co=256
 set laststatus=2
 let g:airline_powerline_fonts=0
@@ -103,8 +123,6 @@ let g:airline_section_z = '%l:%c'
 
 " Indent-Guide
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 
