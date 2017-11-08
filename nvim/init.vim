@@ -36,18 +36,24 @@ Plug 'idris-hackers/idris-vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'raichoo/purescript-vim'
 Plug 'frigoeu/psc-ide-vim'
+Plug 'LnL7/vim-nix'
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
 Plug 'eagletmt/neco-ghc'
 " Plug 'eagletmt/ghcmod-vim'
-Plug 'parsonsmatt/intero-neovim'
+" Plug 'parsonsmatt/intero-neovim'
+" Plug 'alx741/vim-hindent'
 
 " F#
 Plug 'fsharp/vim-fsharp', {
       \ 'for': 'fsharp',
       \ 'do':  'make fsautocomplete',
       \}
+
+" TypeScript
+Plug 'mhartington/nvim-typescript'
+
 
 " File finding stuff
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
@@ -65,7 +71,7 @@ Plug 'simnalamburt/vim-mundo', {'on': 'MundoToggle'}
 Plug 'editorconfig/editorconfig-vim'
 
 " " Lints and completers
-" Plug 'Valloric/YouCompleteMe', {'do': './install.sh --omnisharp-completer --clang-completer --racer-completer --tern-completer'}
+" Plug 'Valloric/YouCompleteMe', {'do': './install.sh '}
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ervandew/supertab'
 Plug 'Shougo/neco-vim'

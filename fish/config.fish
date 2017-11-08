@@ -22,6 +22,8 @@ switch (uname)
     set -U fish_user_paths /home/jonny/bin /usr/local/sbin /usr/local/bin /usr/bin /usr/bin/site_perl /usr/bin/vendor_perl /usr/bin/core_perl ~/.cargo/bin/ ~/.local/bin/
   case Darwin
     set -U fish_user_paths  /usr/local/bin ~/.cargo/bin/ ~/.local/bin/ /Library/Frameworks/Mono.framework/Commands
-    set -U VAGRANT_HOME /Volumes/External/.vagrant.d/
+    set -U ANDROID_SDK_ROOT /usr/local/share/android-sdk
+    set -U C_INCLUDE_PATH /usr/local/Cellar/openssl/1.0.2l/include/
+    set -U LIBRARY_PATH /usr/local/Cellar/openssl/1.0.2l/lib/
     source /Users/Jonny/dotfiles/fish/nix.fish
 end
