@@ -1,8 +1,8 @@
 " Disable haskell-vim omnifunc
 let g:haskellmode_completion_ghc = 0
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+" autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
-setlocal formatprg=hindent
+" setlocal formatprg=hindent
 
 
 " GHC-mod
@@ -38,4 +38,4 @@ let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
 
 
 " necoghc
-let g:necoghc_enable_detailed_browse = 1
+" let g:necoghc_enable_detailed_browse = 1

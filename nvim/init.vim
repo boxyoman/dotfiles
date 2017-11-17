@@ -21,15 +21,11 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'jceb/vim-orgmode'
 
 " Syntax stuff
-Plug 'octol/vim-cpp-enhanced-highlight', {'for': 'cpp'}
-Plug 'vim-scripts/vim-xdc-syntax'
 Plug 'lervag/vim-latex'
-Plug 'keith/swift.vim'
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'dag/vim-fish'
-Plug 'vhda/verilog_systemverilog.vim'
 Plug 'OrangeT/vim-csharp'
 Plug 'ElmCast/elm-vim'
 Plug 'idris-hackers/idris-vim'
@@ -40,7 +36,7 @@ Plug 'LnL7/vim-nix'
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
-Plug 'eagletmt/neco-ghc'
+" Plug 'eagletmt/neco-ghc'
 " Plug 'eagletmt/ghcmod-vim'
 " Plug 'parsonsmatt/intero-neovim'
 " Plug 'alx741/vim-hindent'
@@ -72,6 +68,7 @@ Plug 'editorconfig/editorconfig-vim'
 
 " " Lints and completers
 " Plug 'Valloric/YouCompleteMe', {'do': './install.sh '}
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ervandew/supertab'
 Plug 'Shougo/neco-vim'
@@ -92,24 +89,32 @@ call plug#end()
 
 if has('nvim') " This way, you can also put this in your plain vim config
 
-	" function which starts a nvim-hs instance with the supplied name
-	function! s:RequireHaskellHost(name)
-		" It is important that the current working directory (cwd) is where
-		" your configuration files are.
-		return jobstart(['stack', 'exec', 'my-nvim-hs', a:name.name], {'rpc': v:true, 'cwd': expand('$HOME') . '/dotfiles/nvim/'})
-	endfunction
+  " function which starts a nvim-hs instance with the supplied name
+  function! s:RequireHaskellHost(name)
+    " It is important that the current working directory (cwd) is where
+    " your configuration files are.
+    return jobstart(['stack', 'exec', 'my-nvim-hs', a:name.name], {'rpc': v:true, 'cwd': expand('$HOME') . '/dotfiles/nvim/'})
+  endfunction
 
-	" Register a plugin host that is started when a haskell file is opened
-	call remote#host#Register('haskell', "*.l\?hs", function('s:RequireHaskellHost'))
+  " Register a plugin host that is started when a haskell file is opened
+  call remote#host#Register('haskell', "*.l\?hs", function('s:RequireHaskellHost'))
 
-	" But if you need it for other files as well, you may just start it
-	" forcefully by requiring it
-	let hc=remote#host#Require('haskell')
+  " But if you need it for other files as well, you may just start it
+  " forcefully by requiring it
+  let hc=remote#host#Require('haskell')
 endif
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
 
+" LSP
+let g:LanguageClient_serverCommands = {
+    \ 'haskell': ['hie', '--lsp'],
+    \ }
+
+let g:LanguageClient_autoStart = 1
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 
 " Supertab
 let g:SuperTabDefaultCompletionType = "<c-n>"
@@ -184,7 +189,6 @@ endif
 "Neomake
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_typescript_enabled_makers = ['tsc']
-let g:neomake_haskell_enable_makers = ['hlint']
 autocmd! BufWritePost * Neomake
 
 "UltiSnip
