@@ -1,5 +1,9 @@
 priority -50
 
+snippet module "module"
+module ${1:moduleName} (${2}) where
+endsnippet
+
 snippet if "if ... then ... else ..."
 if ${1:condition}
 	then ${2:expression}
@@ -22,6 +26,7 @@ endsnippet
 
 snippet def "Function definition"
 ${1:name} :: ${2:Type} -> ${3:Type}
+$1 = ${4:undefined}
 endsnippet
 
 snippet def[] "Function definition for list patterns"
@@ -50,7 +55,7 @@ snippet | "Guard"
 endsnippet
 
 snippet \ "Lambda expression"
-\\${1:pattern} -> ${2:expression}
+(\\${1:pattern} -> ${2:expression})
 endsnippet
 
 snippet [|] "List comprehension"

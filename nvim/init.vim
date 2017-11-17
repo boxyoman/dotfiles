@@ -36,10 +36,6 @@ Plug 'LnL7/vim-nix'
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
-" Plug 'eagletmt/neco-ghc'
-" Plug 'eagletmt/ghcmod-vim'
-" Plug 'parsonsmatt/intero-neovim'
-" Plug 'alx741/vim-hindent'
 
 " F#
 Plug 'fsharp/vim-fsharp', {
@@ -83,6 +79,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'dhruvasagar/vim-table-mode', {'on': 'TableModeEnable'}
 Plug 'tpope/vim-commentary'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'machakann/vim-highlightedyank'
 
 call plug#end()
 
@@ -132,6 +129,7 @@ let g:airline_right_sep=''
 let g:airline_section_y = ''
 let g:airline_section_z = '%l:%c'
 
+
 " Indent-Guide
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_enable_on_vim_startup = 1
@@ -142,7 +140,9 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'a'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*/build/*,*/STL/*,*/target/*,*/Debug/*,*/node_modules/*,*/bower_components/*,*/justinviews/*,*/img/*,*/typings/*,*/elm-stuff/*,*/public/*,*/dist/*,*/output/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*/build/*,*/STL/*,*/target/*
+set wildignore+=*/Debug/*,*/node_modules/*,*/bower_components/*,*/justinviews/*
+set wildignore+=*/img/*,*/typings/*,*/elm-stuff/*,*/public/*,*/dist/*,*/output/*
 
 " C++ highighting
 let g:cpp_class_scope_highlight = 1
@@ -150,41 +150,7 @@ let g:cpp_class_scope_highlight = 1
 " Rust
 let g:rust_recommended_style = 0
 
-" Racer
-let g:racer_cmd = "/Users/Jonny/.cargo/bin/racer"
-if s:uname == "Darwin"
-  let $RUST_SRC_PATH="/Users/Jonny/Developer/home/computer/rust/rust/src/"
-elseif s:uname == "Linux"
-  let $RUST_SRC_PATH="/home/jonny/developer/computer/rust/src/"
-endif
 
-" " "YouCompleteMe
-" let g:ycm_confirm_extra_conf = 0
-" nnoremap yd :YcmCompleter GoTo<CR>
-" nnoremap ydd :YcmCompleter GoToDefinition<CR>
-" nnoremap ygt :YcmCompleter GetType<CR>
-" nnoremap ygp :YcmCompleter GetParent<CR>
-" nnoremap ycfi :YcmCompleter FixIt<CR>
-" nnoremap yc :YcmDiags<CR>
-" let g:Show_diagnostics_ui = 1
-" let g:ycm_autoclose_preview_window_after_insertion = 1
-" let g:ycm_add_preview_to_completeopt = 1
-" let g:ycm_rust_src_path = "/Users/Jonny/Developer/home/computer/rust/rust/src/"
-" let ycm_filetype_blacklist = {
-"       \ 'tagbar' : 1,
-"       \ 'qf' : 1,
-"       \ 'notes' : 1,
-"       \ 'markdown' : 1,
-"       \ 'unite' : 1,
-"       \ 'text' : 1,
-"       \ 'vimwiki' : 1,
-"       \ 'pandoc' : 1,
-"       \ 'infolog' : 1,
-"       \ 'mail' : 1,
-"       \ 'fsharp' : 1,
-"       \ 'haskell' : 1,
-"       \ 'elm' : 1
-"       \}
 
 "Neomake
 let g:neomake_javascript_enabled_makers = ['eslint']
@@ -213,8 +179,6 @@ xmap <silent> ige <Plug>CamelCaseMotion_ie
 " Gundo
 nnoremap <leader>u :MundoToggle<CR>
 
-" Verilog
-let b:verilog_indent_modules = 1
 
 " Tab
 set shiftwidth=2
@@ -229,6 +193,7 @@ set showmode
 set showcmd
 set visualbell
 
+" line numers and lines
 set cursorline
 set relativenumber
 set number
@@ -252,6 +217,7 @@ set ignorecase
 set gdefault
 set hlsearch
 set showmatch
+set inccommand=split
 nnoremap <leader><space> :noh<cr>
 
 " long lines
