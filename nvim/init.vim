@@ -68,7 +68,7 @@ Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ervandew/supertab'
 Plug 'Shougo/neco-vim'
-Plug 'benekastah/neomake'
+" Plug 'benekastah/neomake'
 
 " Motions
 Plug 'bkad/CamelCaseMotion'
@@ -153,9 +153,9 @@ let g:rust_recommended_style = 0
 
 
 "Neomake
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_typescript_enabled_makers = ['tsc']
-autocmd! BufWritePost * Neomake
+" let g:neomake_javascript_enabled_makers = ['eslint']
+" let g:neomake_typescript_enabled_makers = ['tsc']
+" autocmd! BufWritePost * Neomake
 
 "UltiSnip
 let g:UltiSnipsSnippetsDir    = '~/dotfiles/nvim/UltiSnips'
