@@ -33,6 +33,7 @@ Plug 'derekwyatt/vim-scala'
 Plug 'raichoo/purescript-vim'
 Plug 'frigoeu/psc-ide-vim'
 Plug 'LnL7/vim-nix'
+Plug 'anekos/hledger-vim'
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
@@ -64,7 +65,10 @@ Plug 'editorconfig/editorconfig-vim'
 
 " " Lints and completers
 " Plug 'Valloric/YouCompleteMe', {'do': './install.sh '}
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh'
+    \ }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ervandew/supertab'
 Plug 'Shougo/neco-vim'
@@ -106,12 +110,13 @@ let g:deoplete#enable_at_startup = 1
 
 " LSP
 let g:LanguageClient_serverCommands = {
-    \ 'haskell': ['hie', '--lsp'],
+    \ 'haskell': ['hie', '--lsp', '--ekg'],
     \ }
 
 let g:LanguageClient_autoStart = 1
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+set formatexpr=LanguageClient_textDocument_rangeFormatting()
 
 " Supertab
 let g:SuperTabDefaultCompletionType = "<c-n>"
