@@ -21,7 +21,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'jceb/vim-orgmode'
 
 " Syntax stuff
-Plug 'lervag/vim-latex'
+Plug 'lervag/vimtex'
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
@@ -34,6 +34,7 @@ Plug 'raichoo/purescript-vim'
 Plug 'frigoeu/psc-ide-vim'
 Plug 'LnL7/vim-nix'
 Plug 'anekos/hledger-vim'
+Plug 'ledger/vim-ledger'
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
@@ -80,6 +81,7 @@ Plug 'b4winckler/vim-angry'
 Plug 'justinmk/vim-sneak'
 
 " Random
+Plug 'mhinz/vim-grepper'
 Plug 'dhruvasagar/vim-table-mode', {'on': 'TableModeEnable'}
 Plug 'tpope/vim-commentary'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
@@ -110,7 +112,7 @@ let g:deoplete#enable_at_startup = 1
 
 " LSP
 let g:LanguageClient_serverCommands = {
-    \ 'haskell': ['hie', '--lsp', '--ekg'],
+    \ 'haskell': ['hie', '--lsp'],
     \ }
 
 let g:LanguageClient_autoStart = 1
@@ -120,6 +122,11 @@ set formatexpr=LanguageClient_textDocument_rangeFormatting()
 
 " Supertab
 let g:SuperTabDefaultCompletionType = "<c-n>"
+
+" Grepper
+runtime plugin/grepper.vim
+let g:grepper.quickfix = 0
+let g:grepper.highlight = 1
 
 " Theme Stuff
 colorscheme PaperColor
