@@ -10,5 +10,4 @@ switch (uname)
   case Darwin
     set -U fish_user_paths  /usr/local/bin ~/.cargo/bin/ ~/.local/bin/ /Library/Frameworks/Mono.framework/Commands
     source /etc/fish/config.fish
-    # bass . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 end
