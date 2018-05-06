@@ -18,8 +18,6 @@ function add-to-path -d "Add directories to \$PATH"
 end
 
 switch (uname)
-  case Linux
-    set -U fish_user_paths /home/jonny/bin /usr/local/sbin /usr/local/bin /usr/bin /usr/bin/site_perl /usr/bin/vendor_perl /usr/bin/core_perl ~/.cargo/bin/ ~/.local/bin/
   case Darwin
     set -U fish_user_paths  /usr/local/bin ~/.cargo/bin/ ~/.local/bin/ /Library/Frameworks/Mono.framework/Commands
     set -U ANDROID_SDK_ROOT /usr/local/share/android-sdk
