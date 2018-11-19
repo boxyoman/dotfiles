@@ -4,7 +4,8 @@
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages =
-    [ pkgs.fish
+    [ pkgs.fish pkgs.nethack pkgs.nixops pkgs.direnv pkgs.neovim
+      pkgs.python27Packages.neovim pkgs.git pkgs.git-crypt
     ];
 
   # Auto upgrade nix package and the daemon service.
@@ -21,8 +22,8 @@
 
   # You should generally set this to the total number of logical cores in your system.
   # $ sysctl -n hw.ncpu
-  nix.maxJobs = 4;
-  nix.buildCores = 4;
+  nix.maxJobs = 3;
+  nix.buildCores = 3;
 
   nix.distributedBuilds = true;
   nix.buildMachines = [ {

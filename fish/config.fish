@@ -5,6 +5,9 @@ alias vim nvim
 alias timeout gtimeout
 
 setenv EDITOR nvim
+eval (direnv hook fish)
+
+setenv FZF_DEFAULT_COMMAND "rg --files"
 
 switch (uname)
   case Darwin

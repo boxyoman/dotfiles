@@ -30,14 +30,16 @@ Plug 'OrangeT/vim-csharp'
 Plug 'ElmCast/elm-vim'
 Plug 'idris-hackers/idris-vim'
 Plug 'derekwyatt/vim-scala'
-Plug 'raichoo/purescript-vim'
-Plug 'frigoeu/psc-ide-vim'
+Plug 'purescript-contrib/purescript-vim'
+" Plug 'frigoeu/psc-ide-vim'
 Plug 'LnL7/vim-nix'
 Plug 'anekos/hledger-vim'
 Plug 'ledger/vim-ledger'
+Plug 'dannywillems/vim-icalendar'
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
+" Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 
 " F#
 Plug 'fsharp/vim-fsharp', {
@@ -51,7 +53,8 @@ Plug 'mhartington/nvim-typescript'
 
 " File finding stuff
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
-Plug 'kien/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
+Plug 'junegunn/fzf.vim'
 
 " Git stuff
 Plug 'tpope/vim-fugitive'
@@ -65,15 +68,11 @@ Plug 'simnalamburt/vim-mundo', {'on': 'MundoToggle'}
 Plug 'editorconfig/editorconfig-vim'
 
 " " Lints and completers
-" Plug 'Valloric/YouCompleteMe', {'do': './install.sh '}
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh'
-    \ }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ervandew/supertab'
 Plug 'Shougo/neco-vim'
 " Plug 'benekastah/neomake'
+Plug 'vim-syntastic/syntastic'
 
 " Motions
 Plug 'bkad/CamelCaseMotion'
@@ -82,7 +81,6 @@ Plug 'justinmk/vim-sneak'
 
 " Random
 Plug 'mhinz/vim-grepper'
-Plug 'dhruvasagar/vim-table-mode', {'on': 'TableModeEnable'}
 Plug 'tpope/vim-commentary'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'machakann/vim-highlightedyank'
@@ -107,18 +105,30 @@ if has('nvim') " This way, you can also put this in your plain vim config
   let hc=remote#host#Require('haskell')
 endif
 
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+
 " Deoplete
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#omni#input_patterns = {}
+" let g:deoplete#omni#input_patterns.purescript =
+"       \ ['\w*']
 
-" LSP
-let g:LanguageClient_serverCommands = {
-    \ 'haskell': ['hie', '--lsp'],
-    \ }
 
-let g:LanguageClient_autoStart = 1
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-set formatexpr=LanguageClient_textDocument_rangeFormatting()
+" FZF
+nnoremap <silent> <c-p> :FZF<CR>
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*/build/*,*/STL/*,*/target/*
+set wildignore+=*/Debug/*,*/node_modules/*,*/bower_components/*,*/justinviews/*
+set wildignore+=*/img/*,*/typings/*,*/elm-stuff/*,*/public/*,*/dist/*,*/output/*
+set wildignore+=*/dist-newstyle/*
+
 
 " Supertab
 let g:SuperTabDefaultCompletionType = "<c-n>"
@@ -141,6 +151,8 @@ let g:airline_right_sep=''
 let g:airline_section_y = ''
 let g:airline_section_z = '%l:%c'
 
+" Ledger
+let g:ledger_bin = 'hledger'
 
 " Indent-Guide
 let g:indent_guides_auto_colors = 0
@@ -148,13 +160,6 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 
 
-" CTRlp
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'a'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*/build/*,*/STL/*,*/target/*
-set wildignore+=*/Debug/*,*/node_modules/*,*/bower_components/*,*/justinviews/*
-set wildignore+=*/img/*,*/typings/*,*/elm-stuff/*,*/public/*,*/dist/*,*/output/*
 
 " C++ highighting
 let g:cpp_class_scope_highlight = 1
