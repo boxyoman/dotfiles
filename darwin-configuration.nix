@@ -5,7 +5,7 @@
   # $ nix-env -qaP | grep wget
   environment.systemPackages =
     [ pkgs.fish pkgs.nethack pkgs.nixops pkgs.direnv pkgs.neovim
-      pkgs.python27Packages.neovim pkgs.git pkgs.git-crypt
+      pkgs.python27Packages.neovim pkgs.git pkgs.git-crypt pkgs.fzf pkgs.ripgrep
     ];
 
   # Auto upgrade nix package and the daemon service.

@@ -31,7 +31,7 @@ Plug 'ElmCast/elm-vim'
 Plug 'idris-hackers/idris-vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'purescript-contrib/purescript-vim'
-" Plug 'frigoeu/psc-ide-vim'
+Plug 'frigoeu/psc-ide-vim'
 Plug 'LnL7/vim-nix'
 Plug 'anekos/hledger-vim'
 Plug 'ledger/vim-ledger'
@@ -73,6 +73,10 @@ Plug 'ervandew/supertab'
 Plug 'Shougo/neco-vim'
 " Plug 'benekastah/neomake'
 Plug 'vim-syntastic/syntastic'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': './install.sh'
+    \ }
 
 " Motions
 Plug 'bkad/CamelCaseMotion'
@@ -118,16 +122,25 @@ let g:syntastic_check_on_wq = 0
 " Deoplete
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#omni#input_patterns = {}
-" let g:deoplete#omni#input_patterns.purescript =
-"       \ ['\w*']
+let g:deoplete#omni#input_patterns.purescript =
+      \ ['\w*']
+
+
+" Language Server
+let g:LanguageClient_serverCommands = { 'haskell': ['hie-wrapper', '--lsp'] }
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+map <LocalLeader>lk :call LanguageClient#textDocument_hover()<CR>
+map <LocalLeader>lg :call LanguageClient#textDocument_definition()<CR>
+map <LocalLeader>lr :call LanguageClient#textDocument_rename()<CR>
+map <LocalLeader>lf :call LanguageClient#textDocument_formatting()<CR>
+map <LocalLeader>lb :call LanguageClient#textDocument_references()<CR>
+map <LocalLeader>la :call LanguageClient#textDocument_codeAction()<CR>
+map <LocalLeader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
+let g:LanguageClient_rootMarkers = ['cabal.project']
 
 
 " FZF
 nnoremap <silent> <c-p> :FZF<CR>
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*/build/*,*/STL/*,*/target/*
-set wildignore+=*/Debug/*,*/node_modules/*,*/bower_components/*,*/justinviews/*
-set wildignore+=*/img/*,*/typings/*,*/elm-stuff/*,*/public/*,*/dist/*,*/output/*
-set wildignore+=*/dist-newstyle/*
 
 
 " Supertab

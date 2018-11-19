@@ -2,31 +2,6 @@
 let g:haskellmode_completion_ghc = 0
 " autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
-" setlocal formatprg=hindent
-
-
-" GHC-mod
-" nnoremap <buffer> <LocalLeader>d :GhcModSigCodegen<cr>
-" nnoremap <buffer> <LocalLeader>c :GhcModSplitFunCase<cr>
-" nnoremap <buffer> <LocalLeader>t :GhcModType<cr>
-" nnoremap <buffer> <LocalLeader><space> :GhcModTypeClear<cr>
-" hi ghcmodType ctermbg=blue
-" let g:ghcmod_type_highlight = 'ghcmodType'
-
-" Intero-neovim
-" autocmd! BufWritePost *.hs InteroReload
-" nnoremap <buffer> <LocalLeader>u :InteroUses<CR>
-" nnoremap <buffer> <LocalLeader>gd :InteroGoToDef<CR>
-" nnoremap <buffer> <LocalLeader>I :InteroTypeInsert<CR>
-" nnoremap <buffer> <LocalLeader>i :InteroInfo<CR>
-" nnoremap <buffer> <LocalLeader>T :InteroType<CR>
-" nnoremap <buffer> <LocalLeader>t :InteroGenericType<CR>
-" nnoremap <buffer> <LocalLeader>e :InteroEval<CR>
-
-" nnoremap <buffer> <LocalLeader>io :InteroOpen<CR>
-" nnoremap <buffer> <LocalLeader>ik :InteroKill<CR>
-" nnoremap <buffer> <LocalLeader>ic :InteroHide<CR>
-" nnoremap <buffer> <LocalLeader>il :InteroLoadCurrentModule<CR>
 
 " NeovimHaskell
 let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
