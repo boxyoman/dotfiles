@@ -36,6 +36,7 @@ Plug 'LnL7/vim-nix'
 Plug 'anekos/hledger-vim'
 Plug 'ledger/vim-ledger'
 Plug 'dannywillems/vim-icalendar'
+Plug 'vmchale/dhall-vim'
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
@@ -72,7 +73,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ervandew/supertab'
 Plug 'Shougo/neco-vim'
 " Plug 'benekastah/neomake'
-Plug 'vim-syntastic/syntastic'
+" Plug 'vim-syntastic/syntastic'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': './install.sh'
