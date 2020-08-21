@@ -30,7 +30,6 @@ Plug 'OrangeT/vim-csharp'
 Plug 'ElmCast/elm-vim'
 Plug 'idris-hackers/idris-vim'
 Plug 'purescript-contrib/purescript-vim'
-Plug 'danieljharvey/psc-ide-vim'
 Plug 'LnL7/vim-nix'
 Plug 'anekos/hledger-vim'
 Plug 'ledger/vim-ledger'
@@ -55,6 +54,7 @@ Plug 'mhartington/nvim-typescript'
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
 Plug 'junegunn/fzf.vim'
+Plug 'monkoose/fzf-hoogle.vim'
 
 " Git stuff
 Plug 'tpope/vim-fugitive'
@@ -72,10 +72,15 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ervandew/supertab'
 Plug 'Shougo/neco-vim'
 " Plug 'benekastah/neomake'
-Plug 'vim-syntastic/syntastic'
+" Plug 'vim-syntastic/syntastic'
+" Plug 'dense-analysis/ale'
 
-Plug 'prabirshrestha/vim-lsp'
+" Plug 'prabirshrestha/vim-lsp'
 Plug 'lighttiger2505/deoplete-vim-lsp'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
 " Motions
 Plug 'bkad/CamelCaseMotion'
@@ -110,21 +115,66 @@ endif
 
 
 " Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
 
+" " Ale
+" let g:airline#extensions#ale#enabled = 1
+" let g:ale_purescript_ls_config = {
+"     \  'purescript': {
+"     \    'addSpagoSources': v:true,
+"     \    'addNpmPath': v:true,
+"     \    'buildCommand': 'spago build -- --json-errors'
+"     \  }
+"     \}
+
+" tex
+let g:tex_flavor = 'latex'
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#smart_case = v:true
-let g:deoplete#omni#input_patterns = {}
-let g:deoplete#omni#input_patterns.purescript =
-      \ ['\w*']
+call deoplete#custom#option('omni_patterns', {
+    \ 'ruby': ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::'],
+    \ 'java': '[^. *\t]\.\w*',
+    \ 'html': ['<', '</', '<[^>]*\s[[:alnum:]-]*'],
+    \ 'xhtml': ['<', '</', '<[^>]*\s[[:alnum:]-]*'],
+    \ 'xml': ['<', '</', '<[^>]*\s[[:alnum:]-]*'],
+    \})
 
+
+" " Language Server
+
+let g:LanguageClient_rootMarkers = [
+    \ 'cabal.project',
+    \ 'stack.yaml',
+    \ '*.cabal',
+    \ 'package.yml',
+    \ 'package.json',
+    \ 'spago.dhall'
+    \ ]
+let g:LanguageClient_serverCommands = {
+    \ 'haskell': ['ghcide', '--lsp'],
+    \ 'purescript': ['purescript-language-server', '--stdio'],
+    \ 'javascript': ['/usr/local/bin/typescript-language-server', '--stdio'],
+    \ }
+
+nmap <F5> <Plug>(lcn-menu)
+" Or map each action separately
+nmap <silent>K <Plug>(lcn-hover)
+nmap <silent> gd <Plug>(lcn-definition)
+nmap <silent> <F2> <Plug>(lcn-rename)
+
+" " LSP
+" au User lsp_setup call lsp#register_server({
+"     \ 'name': 'ghcide',
+"     \ 'cmd': {server_info->['ghcide', '--lsp']},
+"     \ 'whitelist': ['haskell'],
+"     \ })
 
 " FZF
 nnoremap <silent> <c-p> :FZF<CR>

@@ -1,15 +1,26 @@
 { config, pkgs, ... }:
-
+let unstableTarball =
+      fetchTarball
+        https://github.com/NixOS/nixpkgs-channels/archive/nixpkgs-unstable.tar.gz;
+in
 {
+  nixpkgs.config.packageOverrides = pkgs: {
+    unstable = import unstableTarball {
+      config = config.nixpkgs.config;
+    };
+  };
+
+  nixpkgs.config.allowBroken = true;
+
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages =
     [ pkgs.fish pkgs.nethack pkgs.nixops pkgs.direnv pkgs.neovim
-      pkgs.git pkgs.git-crypt pkgs.fzf pkgs.ripgrep
+      pkgs.git pkgs.git-crypt pkgs.fzf pkgs.ripgrep pkgs.jq
     ];
 
   # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
+  services.nix-daemon.enable = false;
   nix.package = pkgs.nix;
 
   # Create /etc/bashrc that loads the nix-darwin environment.
