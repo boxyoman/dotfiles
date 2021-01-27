@@ -54,7 +54,6 @@ Plug 'mhartington/nvim-typescript'
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
 Plug 'junegunn/fzf.vim'
-Plug 'monkoose/fzf-hoogle.vim'
 
 " Git stuff
 Plug 'tpope/vim-fugitive'
@@ -76,7 +75,7 @@ Plug 'Shougo/neco-vim'
 " Plug 'dense-analysis/ale'
 
 " Plug 'prabirshrestha/vim-lsp'
-Plug 'lighttiger2505/deoplete-vim-lsp'
+" Plug 'lighttiger2505/deoplete-vim-lsp'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
@@ -149,16 +148,14 @@ call deoplete#custom#option('omni_patterns', {
 
 " " Language Server
 
-let g:LanguageClient_rootMarkers = [
-    \ 'cabal.project',
-    \ 'stack.yaml',
-    \ '*.cabal',
-    \ 'package.yml',
-    \ 'package.json',
-    \ 'spago.dhall'
-    \ ]
+" let g:LanguageClient_rootMarkers = [
+"     \ 'cabal.project',
+"     \ 'package.yml',
+"     \ 'package.json',
+"     \ 'spago.dhall'
+"     \ ]
 let g:LanguageClient_serverCommands = {
-    \ 'haskell': ['ghcide', '--lsp'],
+    \ 'haskell': ['haskell-language-server-wrapper', '--lsp', '--debug'],
     \ 'purescript': ['purescript-language-server', '--stdio'],
     \ 'javascript': ['/usr/local/bin/typescript-language-server', '--stdio'],
     \ }
@@ -168,6 +165,11 @@ nmap <F5> <Plug>(lcn-menu)
 nmap <silent>K <Plug>(lcn-hover)
 nmap <silent> gd <Plug>(lcn-definition)
 nmap <silent> <F2> <Plug>(lcn-rename)
+
+let g:LanguageClient_loggingLevel = 'INFO'
+let g:LanguageClient_virtualTextPrefix = ''
+" let g:LanguageClient_loggingFile =  expand('~/Desktop/LanguageClient.log')
+" let g:LanguageClient_serverStderr = expand('~/Desktop/LanguageServer.log')
 
 " " LSP
 " au User lsp_setup call lsp#register_server({
