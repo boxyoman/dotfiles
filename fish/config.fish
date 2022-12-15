@@ -11,6 +11,7 @@ setenv FZF_DEFAULT_COMMAND "rg --files"
 
 switch (uname)
   case Darwin
-    set -U fish_user_paths  /usr/local/bin ~/.cargo/bin/ ~/.local/bin/ /Library/Frameworks/Mono.framework/Commands
-    source /etc/fish/config.fish
+    set PATH /usr/local/bin ~/.cargo/bin/ ~/.local/bin/ ~/.cabal/bin/ /run/current-system/sw/bin /nix/var/nix/profiles/default/bin /usr/bin /bin /usr/sbin /sbin /Users/Jonny/.nix-profile/bin
+    # set -U fish_user_paths ~/.cargo/bin/ ~/.local/bin/ ~/.cabal/bin/
+    # source /etc/fish/config.fish
 end

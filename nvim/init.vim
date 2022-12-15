@@ -38,6 +38,9 @@ Plug 'vmchale/dhall-vim'
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
+" Plug 'haskell-tools'
+" Plug 'nvim-lspconfig'
+" Plug 'plenary.nvim'
 " Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 
 " F#
@@ -94,43 +97,6 @@ Plug 'machakann/vim-highlightedyank'
 
 call plug#end()
 
-
-if has('nvim') " This way, you can also put this in your plain vim config
-
-  " function which starts a nvim-hs instance with the supplied name
-  function! s:RequireHaskellHost(name)
-    " It is important that the current working directory (cwd) is where
-    " your configuration files are.
-    return jobstart(['stack', 'exec', 'my-nvim-hs', a:name.name], {'rpc': v:true, 'cwd': expand('$HOME') . '/dotfiles/nvim/'})
-  endfunction
-
-  " Register a plugin host that is started when a haskell file is opened
-  call remote#host#Register('haskell', "*.l\?hs", function('s:RequireHaskellHost'))
-
-  " But if you need it for other files as well, you may just start it
-  " forcefully by requiring it
-  let hc=remote#host#Require('haskell')
-endif
-
-
-" Syntastic
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-
-" " Ale
-" let g:airline#extensions#ale#enabled = 1
-" let g:ale_purescript_ls_config = {
-"     \  'purescript': {
-"     \    'addSpagoSources': v:true,
-"     \    'addNpmPath': v:true,
-"     \    'buildCommand': 'spago build -- --json-errors'
-"     \  }
-"     \}
-
 " tex
 let g:tex_flavor = 'latex'
 
@@ -146,40 +112,11 @@ call deoplete#custom#option('omni_patterns', {
     \})
 
 
-" " Language Server
-
-" let g:LanguageClient_rootMarkers = [
-"     \ 'cabal.project',
-"     \ 'package.yml',
-"     \ 'package.json',
-"     \ 'spago.dhall'
-"     \ ]
-let g:LanguageClient_serverCommands = {
-    \ 'haskell': ['haskell-language-server-wrapper', '--lsp', '--debug'],
-    \ 'purescript': ['purescript-language-server', '--stdio'],
-    \ 'javascript': ['/usr/local/bin/typescript-language-server', '--stdio'],
-    \ }
-
-nmap <F5> <Plug>(lcn-menu)
-" Or map each action separately
-nmap <silent>K <Plug>(lcn-hover)
-nmap <silent> gd <Plug>(lcn-definition)
-nmap <silent> <F2> <Plug>(lcn-rename)
-
-let g:LanguageClient_loggingLevel = 'INFO'
-let g:LanguageClient_virtualTextPrefix = ''
-" let g:LanguageClient_loggingFile =  expand('~/Desktop/LanguageClient.log')
-" let g:LanguageClient_serverStderr = expand('~/Desktop/LanguageServer.log')
-
-" " LSP
-" au User lsp_setup call lsp#register_server({
-"     \ 'name': 'ghcide',
-"     \ 'cmd': {server_info->['ghcide', '--lsp']},
-"     \ 'whitelist': ['haskell'],
-"     \ })
 
 " FZF
 nnoremap <silent> <c-p> :FZF<CR>
+
+set mouse=
 
 " Supertab
 let g:SuperTabDefaultCompletionType = "<c-n>"
@@ -272,7 +209,7 @@ set undofile
 set undolevels=1000
 set undoreload=10000
 set hidden
-au FocusLost * :wa
+" au FocusLost * :wa
 set winaltkeys=no
 
 " allow backspacing over everything in insert mode
