@@ -8,96 +8,6 @@ let mapleader = ","
 
 lua require('config')
 
-" vim-plug, some plugin manager
-" call plug#begin('~/dotfiles/nvim/plugged/')
-"
-" Plug 'SirVer/ultisnips'
-"
-" " Colorfully stuff
-" Plug 'bling/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
-" Plug 'nanotech/jellybeans.vim'
-" Plug 'NLKNguyen/papercolor-theme'
-" Plug 'nathanaelkane/vim-indent-guides'
-
-
-" " Syntax stuff
-" Plug 'lervag/vimtex'
-" Plug 'rust-lang/rust.vim', {'for': 'rust'}
-" Plug 'leafgarland/typescript-vim'
-" Plug 'pangloss/vim-javascript'
-" Plug 'dag/vim-fish'
-" Plug 'OrangeT/vim-csharp'
-" Plug 'ElmCast/elm-vim'
-" Plug 'idris-hackers/idris-vim'
-" Plug 'purescript-contrib/purescript-vim'
-" Plug 'LnL7/vim-nix'
-" Plug 'anekos/hledger-vim'
-" Plug 'ledger/vim-ledger'
-" Plug 'dannywillems/vim-icalendar'
-" Plug 'vmchale/dhall-vim'
-
-" " Haskell
-" Plug 'neovimhaskell/haskell-vim'
-" " Plug 'haskell-tools'
-" " Plug 'nvim-lspconfig'
-" " Plug 'plenary.nvim'
-" " Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
-"
-" " F#
-" Plug 'fsharp/vim-fsharp', {
-"       \ 'for': 'fsharp',
-"       \ 'do':  'make fsautocomplete',
-"       \}
-"
-" " TypeScript
-" Plug 'mhartington/nvim-typescript'
-
-
-" " File finding stuff
-" Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
-" Plug 'junegunn/fzf.vim'
-
-" " Git stuff
-" Plug 'tpope/vim-fugitive'
-" Plug 'airblade/vim-gitgutter'
-"
-" " Other
-" Plug 'tpope/vim-obsession'
-" Plug 'tpope/vim-surround'
-" Plug 'tpope/vim-repeat'
-" Plug 'simnalamburt/vim-mundo', {'on': 'MundoToggle'}
-" Plug 'editorconfig/editorconfig-vim'
-"
-" " " Lints and completers
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'ervandew/supertab'
-" Plug 'Shougo/neco-vim'
-" " Plug 'benekastah/neomake'
-" " Plug 'vim-syntastic/syntastic'
-" " Plug 'dense-analysis/ale'
-"
-" " Plug 'prabirshrestha/vim-lsp'
-" " Plug 'lighttiger2505/deoplete-vim-lsp'
-" Plug 'autozimu/LanguageClient-neovim', {
-"     \ 'branch': 'next',
-"     \ 'do': 'bash install.sh',
-"     \ }
-"
-" " Motions
-" Plug 'bkad/CamelCaseMotion'
-" Plug 'b4winckler/vim-angry'
-" Plug 'justinmk/vim-sneak'
-"
-" " Random
-" Plug 'mhinz/vim-grepper'
-" Plug 'tpope/vim-commentary'
-" Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-" Plug 'machakann/vim-highlightedyank'
-"
-" call plug#end()
-
 " tex
 let g:tex_flavor = 'latex'
 
@@ -112,9 +22,10 @@ set mouse=
 " let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " Grepper
-" runtime plugin/grepper.vim
-" let g:grepper.quickfix = 0
-" let g:grepper.highlight = 1
+runtime plugin/grepper.vim
+let g:grepper.quickfix = 0
+let g:grepper.highlight = 1
+nmap gs  <plug>(GrepperOperator)
 
 " Theme Stuff
 colorscheme PaperColor
@@ -223,7 +134,9 @@ set colorcolumn=81
 
 " Moving
 nnoremap j gj
+nnoremap gj j
 nnoremap k gk
+nnoremap gk k
 inoremap jk <ESC>
 nnoremap <c-e> 4<c-e>
 nnoremap <c-y> 4<c-y>

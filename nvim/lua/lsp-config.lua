@@ -72,6 +72,11 @@ ht.setup {
       on_attach(client, bufnr)
     end,
   },
+  settings = {
+    haskell = {
+      formattingProvider = "stylish-haskell",
+    }
+  },
 }
 -- Suggested keymaps that do not depend on haskell-language-server
 -- Toggle a GHCi repl for the current package
