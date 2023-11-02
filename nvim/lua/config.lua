@@ -25,21 +25,35 @@ return require('packer').startup(function(use)
   use 'dag/vim-fish'
   use 'LnL7/vim-nix'
   use 'neovimhaskell/haskell-vim'
+  use 'ionide/Ionide-vim'
   use {
     'MrcJkb/haskell-tools.nvim',
     requires = {
       'neovim/nvim-lspconfig',
       'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope.nvim', -- optional
     },
+    branch = '1.x.x',
   }
   use 'purescript-contrib/purescript-vim'
   use 'vmchale/dhall-vim'
+  use 'ziglang/zig.vim'
 
   -- File finding and stuff
   use { 'scrooloose/nerdtree', cmd = 'NERDTreeToggle' }
-  use 'junegunn/fzf'
-  use 'junegunn/fzf.vim'
+  use {
+    'ThePrimeagen/harpoon',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
+  }
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
+  }
+  -- use 'junegunn/fzf'
+  -- use 'junegunn/fzf.vim'
 
   -- Git stuff
   use 'tpope/vim-fugitive'
@@ -70,8 +84,6 @@ return require('packer').startup(function(use)
   if packer_bootstrap then
     require('packer').sync()
   end
-  require('cmp-config')
-  require('lsp-config')
 
 end)
 

@@ -14,7 +14,7 @@ let g:tex_flavor = 'latex'
 
 
 " FZF
-nnoremap <silent> <c-p> :FZF<CR>
+" nnoremap <silent> <c-p> :FZF<CR>
 
 set mouse=
 
@@ -160,12 +160,17 @@ vnoremap <leader>y "+y
 vnoremap <leader>p "+p
 nnoremap Y y$
 
+vnoremap <space>p "_dP
+
 " Window mappings
 nnoremap <leader>w <C-w>n<C-w>L
 nnoremap <leader><leader> <c-w><c-w>
 nnoremap <leader>. <c-w><c-h>
 nnoremap <c-w>n :vnew<cr>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+" zig settings
+let g:zig_fmt_autosave = 0
 
 " some file specific stuff
 au BufReadPost,BufRead *.md set filetype=markdown
@@ -178,13 +183,6 @@ set listchars=tab:▸\ ,eol:¬
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
 
-" Open new tab with terminal
-nnoremap <leader>tnw <C-w>n<C-w>L:term<cr>
-nnoremap <leader>tnt :tabnew<cr>:term<cr>
-
-" terminal mode
-tmap <leader><leader> <c-\><c-n><leader><leader>
-tmap gt <c-\><c-n>gt
 
 " C++ options
 set cino=N-s
