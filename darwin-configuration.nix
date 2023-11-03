@@ -1,6 +1,7 @@
 { pkgs, ... }:
 let
   nix-20-09 = import <nix-20.09> {};
+  nix-unstable = import <unstable> {};
 in {
 
   imports = [ <home-manager/nix-darwin> ];
@@ -10,6 +11,7 @@ in {
   environment.systemPackages =
     [ pkgs.fish pkgs.nethack pkgs.direnv nix-20-09.nixops
       pkgs.neovim nix-20-09.git pkgs.git-crypt pkgs.fzf pkgs.ripgrep pkgs.niv
+      pkgs.nodejs pkgs.postgresql_15 nix-unstable.zig_0_11 nix-unstable.zls
     ];
 
   # Auto upgrade nix package and the daemon service.
@@ -39,24 +41,29 @@ in {
   ];
 
 
-  nix.settings.substituters = [
-    "https://cache.iog.io"
-    "https://cache.nixos.org"
-  ];
-  nix.settings.trusted-public-keys = [
-    "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
-    "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-  ];
-
   # Create /etc/bashrc that loads the nix-darwin environment.
   programs.bash.enable = true;
   programs.fish.enable = true;
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
+  system.stateVersion = 4;
 
-  # You should generally set this to the total number of logical cores in your system.
-  # $ sysctl -n hw.ncpu
+  # services.postgresql = {
+  #   enabled = true;
+  #   package = pkgs.postgresql_15;
+  #   ensureDatabases = [
+  #     "p215"
+  #   ];
+  #   ensureUsers = [
+  #     {
+  #       name = "jonny";
+  #       ensurePermissions = {
+  #         "DATABASE p215" = "ALL PRIVILEGES";
+  #       };
+  #     }
+  #   ];
+  # };
 
 
 }
