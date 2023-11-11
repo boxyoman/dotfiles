@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/home/jonny/.local/share/nvim/site/pack/packer/start/CamelCaseMotion",
     url = "https://github.com/bkad/CamelCaseMotion"
   },
+  ["Ionide-vim"] = {
+    loaded = true,
+    path = "/home/jonny/.local/share/nvim/site/pack/packer/start/Ionide-vim",
+    url = "https://github.com/ionide/Ionide-vim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/jonny/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -109,15 +114,10 @@ _G.packer_plugins = {
     path = "/home/jonny/.local/share/nvim/site/pack/packer/start/dhall-vim",
     url = "https://github.com/vmchale/dhall-vim"
   },
-  fzf = {
+  harpoon = {
     loaded = true,
-    path = "/home/jonny/.local/share/nvim/site/pack/packer/start/fzf",
-    url = "https://github.com/junegunn/fzf"
-  },
-  ["fzf.vim"] = {
-    loaded = true,
-    path = "/home/jonny/.local/share/nvim/site/pack/packer/start/fzf.vim",
-    url = "https://github.com/junegunn/fzf.vim"
+    path = "/home/jonny/.local/share/nvim/site/pack/packer/start/harpoon",
+    url = "https://github.com/ThePrimeagen/harpoon"
   },
   ["haskell-tools.nvim"] = {
     loaded = true,
@@ -259,6 +259,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jonny/.local/share/nvim/site/pack/packer/start/vim-vsnip",
     url = "https://github.com/hrsh7th/vim-vsnip"
+  },
+  ["zig.vim"] = {
+    loaded = true,
+    path = "/home/jonny/.local/share/nvim/site/pack/packer/start/zig.vim",
+    url = "https://github.com/ziglang/zig.vim"
   }
 }
 

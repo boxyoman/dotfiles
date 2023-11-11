@@ -32,7 +32,6 @@ return require('packer').startup(function(use)
       'neovim/nvim-lspconfig',
       'nvim-lua/plenary.nvim',
     },
-    branch = '1.x.x',
   }
   use 'purescript-contrib/purescript-vim'
   use 'vmchale/dhall-vim'
