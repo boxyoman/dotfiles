@@ -2,8 +2,9 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, nixpkgs-20-09, ... }:
+{ config, pkgs, nixpkgs-unstable, nixpkgs-20-09, ... }:
 let pkgs-20-09 = (import nixpkgs-20-09) {system = "x86_64-linux";};
+    pkgs-unstable = (import nixpkgs-unstable) {system = "x86_64-linux"; config.allowUnfree = true;};
 in
 {
   imports =
@@ -100,6 +101,11 @@ in
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  programs.virt-manager.enable = true;
+  virtualisation.libvirtd.enable = true;
+  services.qemuGuest.enable = true;
+  virtualisation.kvmgt.enable = true;
+
   # Enable sound with pipewire.
   sound.enable = true;
   #hardware.pulseaudio = {
@@ -133,11 +139,11 @@ in
   users.users.jonny = {
     isNormalUser = true;
     description = "jonny";
-    extraGroups = [ "networkmanager" "wheel" "audio"];
+    extraGroups = [ "networkmanager" "wheel" "audio" "kvm"];
     shell = pkgs.fish;
     packages = with pkgs; [
       firefox
-      betterbird
+      thunderbird
       wmctrl
       pkgs-20-09.git
       git-crypt
@@ -150,10 +156,28 @@ in
       pavucontrol
       evolution
       cloc
+      librewolf
+      qutebrowser
+      ungoogled-chromium
+      tor-browser-bundle-bin
+      nodePackages.typescript-language-server
+      protonvpn-gui
+      protonmail-bridge
+      gnumake
+      gcc
+      nodejs
+      pkgs-unstable.bruno
+      tmux
+      ghc
+      qemu
+      kvmtool
+      virtiofsd
+      freerdp
+      libvirt
     ];
   };
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     hasklig
   ];
 
@@ -162,13 +186,15 @@ in
     useRoutingFeatures = "client";
   };
 
+  services.flatpak.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim fish i3 alacritty rofi i3status xclip
+    neovim fish i3 alacritty rofi i3status xclip dnsutils
   ];
 
 
@@ -186,7 +212,7 @@ in
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 1234 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
