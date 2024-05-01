@@ -174,6 +174,14 @@ in
       virtiofsd
       freerdp
       libvirt
+      cabal2nix
+      openssl
+      du-dust
+      prismlauncher
+      minetest
+      wireguard-tools
+      appimage-run
+      python311Packages.pyatv
     ];
   };
 
@@ -212,7 +220,33 @@ in
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 1234 ];
+  networking.firewall.allowedTCPPorts = [ 12345 44087 ];
+  networking.firewall.allowedUDPPorts = [ 51820 ];
+
+#  networking.wireguard.interfaces = {
+#    # "wg0" is the network interface name. You can name the interface arbitrarily.
+#    wg0 = {
+#      # Determines the IP address and subnet of the client's end of the tunnel interface.
+#      ips = [ "10.50.0.71/32" ];
+#      listenPort = 51820; # to match firewall allowedUDPPorts (without this wg uses random port numbers)
+
+#      # Path to the private key file.
+#      #
+#      # Note: The private key can also be included inline via the privateKey option,
+#      # but this makes the private key world-readable; thus, using privateKeyFile is
+#      # recommended.
+#      privateKeyFile = "/home/jonny/wireguard-keys/private";
+#      peers = [
+#        {
+#          publicKey = "TCE5NDddmuBi327F91+VOCUj8BiwhlDP4I0Jxb4u1AQ=";
+#          allowedIPs = [ "10.50.0.0/24" ];
+#          endpoint = "68.46.175.71:51820";
+#          persistentKeepalive = 25;
+#        }
+#      ];
+#    };
+#  };
+
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
