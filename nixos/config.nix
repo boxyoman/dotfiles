@@ -176,12 +176,20 @@ in
       libvirt
       cabal2nix
       openssl
+      # jdk21
+      jdk17
       du-dust
       prismlauncher
       minetest
       wireguard-tools
       appimage-run
       python311Packages.pyatv
+      lutris
+      wine
+      srm
+      mumble
+      restic
+      unzip
     ];
   };
 
@@ -192,6 +200,7 @@ in
   services.tailscale = {
     enable = true;
     useRoutingFeatures = "client";
+    package = pkgs-unstable.tailscale;
   };
 
   services.flatpak.enable = true;
@@ -220,8 +229,20 @@ in
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 12345 44087 ];
-  networking.firewall.allowedUDPPorts = [ 51820 ];
+  networking.firewall.allowedTCPPorts = [ ];
+  networking.firewall.allowedUDPPorts = [ ];
+
+  services.restic.backups.nas = {
+    user = "jonny";
+    repository = "sftp:boxyoman@10.0.3.106:/home/Backups/framework";
+    passwordFile = "/restic/password";
+    paths = [
+      "/home/jonny/"
+    ];
+    timerConfig = {
+      OnCalendar = "hourly";
+    };
+  };
 
 #  networking.wireguard.interfaces = {
 #    # "wg0" is the network interface name. You can name the interface arbitrarily.
