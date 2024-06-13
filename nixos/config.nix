@@ -212,6 +212,7 @@ in
       lxqt.lxqt-policykit
       nwg-look
       gnome.dconf-editor
+      rofi-bluetooth
     ];
   };
 

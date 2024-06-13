@@ -36,7 +36,7 @@
         "spacing": 10
     },
     "bluetooth": {
-      "on-click": "blueman-manager"
+      "on-click": "/etc/profiles/per-user/jonny/bin/rofi-bluetooth"
     },
     "clock": {
       "on-click": "gnome-calendar",
