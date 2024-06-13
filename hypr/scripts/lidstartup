@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+if grep closed /proc/acpi/button/lid/LID0/state; then
+  hyprctl keyword monitor "eDP-1, disable"
+fi
+

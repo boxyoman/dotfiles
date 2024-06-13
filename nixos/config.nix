@@ -5,6 +5,7 @@
 { config, pkgs, nixpkgs-unstable, nixpkgs-20-09, ... }:
 let pkgs-20-09 = (import nixpkgs-20-09) {system = "x86_64-linux";};
     pkgs-unstable = (import nixpkgs-unstable) {system = "x86_64-linux"; config.allowUnfree = true;};
+
 in
 {
   imports =
@@ -34,15 +35,18 @@ in
   # Enable networking
   networking.networkmanager.enable = true;
 
+
   programs.steam.enable = true;
 
   hardware.enableAllFirmware = true;
+  services.blueman.enable = true;
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
     settings = {
       General = {
         Enable = "Source,Sink,Media,Socket";
+        Experimental = true;
       };
     };
   };
@@ -74,18 +78,26 @@ in
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager = {
+  # services.xserver.displayManager = {
+  #   sessionCommands = "export KDEWM=${pkgs.i3}/bin/i3";
+  # };
+  # services.xserver.desktopManager.plasma5 = {
+  #   enable = true;
+  #   runUsingSystemd = false;
+  # };
+
+  services.displayManager = {
     autoLogin = {
       enable = true;
       user = "jonny";
     };
     sddm.enable = true;
-    sessionCommands = "export KDEWM=${pkgs.i3}/bin/i3";
   };
-  services.xserver.desktopManager.plasma5 = {
-    enable = true;
-    runUsingSystemd = false;
-  };
+
+  programs.hyprland.enable = true;
+  programs.nm-applet.enable = true;
+  programs.waybar.enable = true;
+
   services.picom = {
     enable = true;
     shadow = true;
@@ -93,9 +105,9 @@ in
   };
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
 
   # Enable CUPS to print documents.
@@ -176,7 +188,7 @@ in
       libvirt
       cabal2nix
       openssl
-      # jdk21
+      jdk21
       jdk17
       du-dust
       prismlauncher
@@ -190,13 +202,31 @@ in
       mumble
       restic
       unzip
+      krita
+      networkmanagerapplet
+      waybar
+      rofi-wayland
+      xdg-desktop-portal-hyprland
+      wl-clipboard
+      swaynotificationcenter
+      lxqt.lxqt-policykit
+      nwg-look
+      gnome.dconf-editor
     ];
   };
 
+  qt.enable = true;
+  qt.platformTheme = "gtk2";
+  qt.style = "gtk2";
+
   fonts.packages = with pkgs; [
-    hasklig
+    hasklig font-awesome
   ];
 
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
   services.tailscale = {
     enable = true;
     useRoutingFeatures = "client";
@@ -205,28 +235,24 @@ in
 
   services.flatpak.enable = true;
 
+  services.gnome.gnome-keyring.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim fish i3 alacritty rofi i3status xclip dnsutils
+    neovim fish alacritty xclip dnsutils
+    paper-gtk-theme
+    whitesur-gtk-theme
+    vimix-gtk-themes
+    spacx-gtk-theme
+    kdePackages.breeze-gtk
   ];
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ ];
