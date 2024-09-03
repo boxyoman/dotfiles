@@ -1,8 +1,7 @@
 * {
     border: none;
     font-family: Font Awesome, Roboto, Arial, sans-serif;
-    font-size: 13px;
-    border-radius: 20px;
+    font-size: 14px;
 }
 
 window#waybar {
@@ -18,15 +17,16 @@ window#waybar {
 }
 .modules-center {
   background-color: rgba(0,43,51,0.85);
+  padding: 0px 5px;
   margin: 2px 0 0 0;
 }
 .modules-left {
   margin: 2px 0 0 5px;
-  background-color: rgba(0,119,179,0.6);
+  /* background-color: rgba(0,119,179,0.6); */
 }
 /*-----modules indv----*/
 #workspaces button {
-  padding: 1px 5px;
+  padding: 2px 5px;
   background-color: transparent;
   color: #ffffff;
 }
@@ -35,12 +35,14 @@ window#waybar {
   background-color: rgba(0,153,153,1);
 }
 
-#workspaces button.focused {
+#workspaces button.active {
   background-color: rgba(0,43,51,0.85);
+}
+#workspaces button.urgent {
+  background-color: red;
 }
 
 #clock,
-#battery,
 #bluetooth,
 #temperature,
 #network,
@@ -64,6 +66,7 @@ window#waybar {
 }
 #battery.warning:not(.charging) {
 	color: #e6e600;
+  background-color: transparent;
 }
 #battery.critical:not(.charging) {
     color: #cc3436;

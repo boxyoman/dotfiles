@@ -17,7 +17,7 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -34,6 +34,16 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    wtype
+    playerctl
+    brightnessctl
+    kdePackages.dolphin
+    kdePackages.kwallet
+    kdePackages.qtwayland
+    kdePackages.kwalletmanager
+    dhall
+    gcs
+    appflowy
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -73,14 +83,15 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
   gtk = {
     enable = true;
     theme = {
-      name = "Breeze-Dark";
+      name = "Breeze";
       package = pkgs.kdePackages.breeze-gtk;
     };
     iconTheme = {
-      name = "Breeze-Dark";
+      name = "Breeze";
       package = pkgs.kdePackages.breeze-icons;
     };
     cursorTheme = {
@@ -88,4 +99,39 @@
       package = pkgs.quintom-cursor-theme;
     };
   };
+
+  programs.rofi = {
+    enable = true;
+    package = pkgs.rofi-wayland;
+    pass = {
+      enable = true;
+      package = pkgs.rofi-pass-wayland;
+    };
+    theme = "Arc-Dark";
+    plugins = with pkgs; [
+      (rofi-emoji.override { rofi-unwrapped = pkgs.rofi-wayland; })
+      (rofi-file-browser.override { rofi = pkgs.rofi-wayland; })
+    ];
+  };
+
+#   xdg.portal = {
+#     enable = true;
+#     config = {
+#       hyprland = {
+#         default = [
+#           "hyprland"
+#           "gtk"
+#         ];
+#         "org.freedesktop.impl.portal.FileChooser" = [
+#           "kde"
+#         ];
+#       };
+#     };
+#     extraPortals = [
+#       pkgs.xdg-desktop-portal-hyprland
+#       pkgs.xdg-desktop-portal-gtk
+#     ];
+
+#   };
+
 }

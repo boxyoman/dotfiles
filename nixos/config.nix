@@ -118,6 +118,14 @@ in
   services.qemuGuest.enable = true;
   virtualisation.kvmgt.enable = true;
 
+  virtualisation.docker = {
+    enable = true;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+  };
+
   # Enable sound with pipewire.
   sound.enable = true;
   #hardware.pulseaudio = {
@@ -151,7 +159,7 @@ in
   users.users.jonny = {
     isNormalUser = true;
     description = "jonny";
-    extraGroups = [ "networkmanager" "wheel" "audio" "kvm"];
+    extraGroups = [ "networkmanager" "wheel" "audio" "kvm" "docker"];
     shell = pkgs.fish;
     packages = with pkgs; [
       firefox
@@ -172,6 +180,7 @@ in
       qutebrowser
       ungoogled-chromium
       tor-browser-bundle-bin
+      typescript
       nodePackages.typescript-language-server
       protonvpn-gui
       protonmail-bridge
@@ -213,12 +222,13 @@ in
       nwg-look
       gnome.dconf-editor
       rofi-bluetooth
+      haskellPackages.cabal-plan
     ];
   };
 
   qt.enable = true;
   qt.platformTheme = "gtk2";
-  qt.style = "gtk2";
+  qt.style = "breeze";
 
   fonts.packages = with pkgs; [
     hasklig font-awesome
@@ -236,7 +246,8 @@ in
 
   services.flatpak.enable = true;
 
-  services.gnome.gnome-keyring.enable = true;
+  # services.gnome.gnome-keyring.enable = true;
+  security.pam.services.kdewallet.kwallet.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -245,19 +256,14 @@ in
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     neovim fish alacritty xclip dnsutils
-    paper-gtk-theme
-    whitesur-gtk-theme
-    vimix-gtk-themes
-    spacx-gtk-theme
-    kdePackages.breeze-gtk
   ];
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
 
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ ];
-  networking.firewall.allowedUDPPorts = [ ];
+  networking.firewall.allowedTCPPorts = [ 8080 1234 ];
+  networking.firewall.allowedUDPPorts = [ 1234 ];
 
   services.restic.backups.nas = {
     user = "jonny";
