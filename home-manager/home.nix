@@ -44,7 +44,18 @@
     dhall
     gcs
     appflowy
+    vlc
+    awscli2
+    freecad-wayland
   ];
+
+#   home.pointerCursor = {
+#     gtk.enable = true;
+#     # x11.enable = true;
+#     package = pkgs.quintom-cursor-theme;
+#     name = "Quintom_Ink";
+#     size = 8;
+#   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -109,8 +120,8 @@
     };
     theme = "Arc-Dark";
     plugins = with pkgs; [
-      (rofi-emoji.override { rofi-unwrapped = pkgs.rofi-wayland; })
-      (rofi-file-browser.override { rofi = pkgs.rofi-wayland; })
+      # (rofi-emoji.override { rofi-unwrapped = pkgs.rofi-wayland; })
+      # (rofi-file-browser.override { rofi = pkgs.rofi-wayland; })
     ];
   };
 

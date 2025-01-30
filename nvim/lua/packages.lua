@@ -18,8 +18,16 @@ return require('packer').startup(function(use)
   use 'bling/vim-airline'
   use 'vim-airline/vim-airline-themes'
   use 'nanotech/jellybeans.vim'
-  use 'NLKNguyen/papercolor-theme'
-  use 'nathanaelkane/vim-indent-guides'
+  use 'Mofiqul/vscode.nvim'
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+        local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+        ts_update()
+    end,
+  }
+  -- use 'nathanaelkane/vim-indent-guides'
+  use "lukas-reineke/indent-blankline.nvim"
 
   -- Languages and stuff
   use 'dag/vim-fish'
@@ -39,12 +47,6 @@ return require('packer').startup(function(use)
 
   -- File finding and stuff
   use { 'scrooloose/nerdtree', cmd = 'NERDTreeToggle' }
-  use {
-    'ThePrimeagen/harpoon',
-    requires = {
-      'nvim-lua/plenary.nvim'
-    },
-  }
   use {
     'nvim-telescope/telescope.nvim',
     requires = {
@@ -85,4 +87,3 @@ return require('packer').startup(function(use)
   end
 
 end)
-

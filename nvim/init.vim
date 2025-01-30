@@ -6,7 +6,9 @@ endif
 " Change Leader
 let mapleader = ","
 
-lua require('config')
+lua require('packages')
+lua require('color')
+lua require('indent-blankline')
 
 " tex
 let g:tex_flavor = 'latex'
@@ -28,10 +30,8 @@ let g:grepper.highlight = 1
 nmap gs  <plug>(GrepperOperator)
 
 " Theme Stuff
-colorscheme PaperColor
 set background=light
-let g:airline_theme='papercolor'
-set t_Co=256
+let g:airline_theme='sol'
 set laststatus=2
 let g:airline_powerline_fonts=0
 let g:airline#extensions#tabline#enabled = 1

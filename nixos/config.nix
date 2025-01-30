@@ -94,7 +94,15 @@ in
     sddm.enable = true;
   };
 
-  programs.hyprland.enable = true;
+  programs.uwsm.enable = true;
+
+  programs.hyprlock = {
+    enable = true;
+  };
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+  };
   programs.nm-applet.enable = true;
   programs.waybar.enable = true;
 
@@ -127,7 +135,7 @@ in
   };
 
   # Enable sound with pipewire.
-  sound.enable = true;
+  # sound.enable = true;
   #hardware.pulseaudio = {
   #  enable = true;
   #  package = pkgs.pulseaudioFull;
@@ -179,11 +187,8 @@ in
       librewolf
       qutebrowser
       ungoogled-chromium
-      tor-browser-bundle-bin
       typescript
       nodePackages.typescript-language-server
-      protonvpn-gui
-      protonmail-bridge
       gnumake
       gcc
       nodejs
@@ -220,9 +225,11 @@ in
       swaynotificationcenter
       lxqt.lxqt-policykit
       nwg-look
-      gnome.dconf-editor
+      dconf-editor
       rofi-bluetooth
       haskellPackages.cabal-plan
+      cider
+      hyprlock
     ];
   };
 
@@ -246,7 +253,7 @@ in
 
   services.flatpak.enable = true;
 
-  # services.gnome.gnome-keyring.enable = true;
+  services.gnome.gnome-keyring.enable = true;
   security.pam.services.kdewallet.kwallet.enable = true;
 
   # Allow unfree packages
@@ -255,19 +262,19 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim fish alacritty xclip dnsutils
+    pkgs-unstable.neovim fish alacritty xclip dnsutils
   ];
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
 
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 8080 1234 ];
+  networking.firewall.allowedTCPPorts = [ 8080 1234 8050 ];
   networking.firewall.allowedUDPPorts = [ 1234 ];
 
   services.restic.backups.nas = {
     user = "jonny";
-    repository = "sftp:boxyoman@10.0.3.106:/home/Backups/framework";
+    repository = "sftp:boxyoman@10.0.3.106:/volume1/homes/boxyoman/Backups/framework";
     passwordFile = "/restic/password";
     paths = [
       "/home/jonny/"
