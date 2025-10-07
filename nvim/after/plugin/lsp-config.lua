@@ -8,7 +8,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
     -- Enable completion triggered by <c-x><c-o>
-    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+    -- vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
     local bufopts = { noremap=true, silent=true, buffer=bufnr }
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
@@ -28,20 +28,23 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
-require('lspconfig')['pyright'].setup{
+vim.lsp.config('dhall_lsp_server', {
     flags = lsp_flags,
-}
-require('lspconfig')['tsserver'].setup{
+})
+vim.lsp.config('pyright', {
     flags = lsp_flags,
-}
-require('lspconfig')['rust_analyzer'].setup{
+})
+vim.lsp.config('ts_ls', {
+    flags = lsp_flags,
+})
+vim.lsp.config('rust_analyzer', {
     flags = lsp_flags,
     -- Server-specific settings...
     settings = {
       ["rust-analyzer"] = {}
     }
-}
-require('lspconfig')['purescriptls'].setup {
+})
+vim.lsp.config('purescriptls', {
   settings = {
     purescript = {
       addSpagoSources = true -- e.g. any purescript language-server config here
@@ -50,5 +53,5 @@ require('lspconfig')['purescriptls'].setup {
   flags = {
     debounce_text_changes = 150,
   }
-}
+})
 

@@ -1,33 +1,16 @@
-let s:uname = ""
-if has("unix")
-  let s:uname = substitute(system("uname"), '\n', '', '')
-endif
+ let s:uname = ""
+ if has("unix")
+   let s:uname = substitute(system("uname"), '\n', '', '')
+ endif
 
 " Change Leader
 let mapleader = ","
 
-lua require('packages')
+lua require('config.lazy')
 lua require('color')
 lua require('indent-blankline')
 
-" tex
-let g:tex_flavor = 'latex'
-
-
-
-" FZF
-" nnoremap <silent> <c-p> :FZF<CR>
-
 set mouse=
-
-" Supertab
-" let g:SuperTabDefaultCompletionType = "<c-n>"
-
-" Grepper
-runtime plugin/grepper.vim
-let g:grepper.quickfix = 0
-let g:grepper.highlight = 1
-nmap gs  <plug>(GrepperOperator)
 
 " Theme Stuff
 set background=light
@@ -39,35 +22,6 @@ let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_section_y = ''
 let g:airline_section_z = '%l:%c'
-
-" Ledger
-let g:ledger_bin = 'hledger'
-
-" Indent-Guide
-let g:indent_guides_auto_colors = 0
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
-
-
-
-" C++ highighting
-let g:cpp_class_scope_highlight = 1
-
-" Rust
-let g:rust_recommended_style = 0
-
-
-
-"Neomake
-" let g:neomake_javascript_enabled_makers = ['eslint']
-" let g:neomake_typescript_enabled_makers = ['tsc']
-" autocmd! BufWritePost * Neomake
-
-"UltiSnip
-let g:UltiSnipsSnippetsDir    = '~/dotfiles/nvim/UltiSnips'
-let g:UltiSnipsExpandTrigger  = "<c-j>"
-let g:UltiJumpForwardTrigger  = "<c-j>"
-let g:UltiJumpBackwardTrigger = "<c-s-j>"
 
 " NERDTree
 nnoremap <leader>o :NERDTreeToggle<CR>
@@ -148,8 +102,6 @@ nnoremap <leader>bp :bp<cr>
 " Quick Macro
 nnoremap Q @q
 
-" Sudo save
-cmap w!! w !sudo /usr/bin/tee > /dev/null %
 
 " Easy Copy and paste from clip board
 nnoremap <leader>p "+p
@@ -161,6 +113,8 @@ vnoremap <leader>p "+p
 nnoremap Y y$
 
 vnoremap <space>p "_dP
+
+autocmd TextYankPost * silent! lua vim.hl.on_yank {higroup='Visual', timeout=1000}
 
 " Window mappings
 nnoremap <leader>w <C-w>n<C-w>L
@@ -182,6 +136,7 @@ set listchars=tab:▸\ ,eol:¬
 "Invisible character colors
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
+
 
 
 " C++ options

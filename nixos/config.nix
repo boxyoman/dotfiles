@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, nixpkgs-unstable, nixpkgs-20-09, ... }:
+{ config, pkgs, nixpkgs-unstable, nixpkgs-20-09, zen-browser, system, ... }:
 let pkgs-20-09 = (import nixpkgs-20-09) {system = "x86_64-linux";};
     pkgs-unstable = (import nixpkgs-unstable) {system = "x86_64-linux"; config.allowUnfree = true;};
 
@@ -23,22 +23,18 @@ in
   '';
 
   boot.initrd.luks.devices."luks-9d7ef2ab-cb4f-4579-9192-6cc7a51ba882".device = "/dev/disk/by-uuid/9d7ef2ab-cb4f-4579-9192-6cc7a51ba882";
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  networking.hostName = "nixos"; # Define your hostname.
 
   services.fprintd.enable = true;
 
   # Enable networking
   networking.networkmanager.enable = true;
 
-
   programs.steam.enable = true;
 
   hardware.enableAllFirmware = true;
+
   services.blueman.enable = true;
   hardware.bluetooth = {
     enable = true;
@@ -74,34 +70,19 @@ in
 
   services.fwupd.enable = true;
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  # services.xserver.displayManager = {
-  #   sessionCommands = "export KDEWM=${pkgs.i3}/bin/i3";
-  # };
-  # services.xserver.desktopManager.plasma5 = {
-  #   enable = true;
-  #   runUsingSystemd = false;
-  # };
-
   services.displayManager = {
-    autoLogin = {
-      enable = true;
-      user = "jonny";
-    };
     sddm.enable = true;
   };
 
-  programs.uwsm.enable = true;
+  # programs.uwsm.enable = true;
 
   programs.hyprlock = {
     enable = true;
   };
+  services.displayManager.sddm.wayland.enable = true;
   programs.hyprland = {
     enable = true;
-    withUWSM = true;
+    # withUWSM = true;
   };
   programs.nm-applet.enable = true;
   programs.waybar.enable = true;
@@ -110,12 +91,6 @@ in
     enable = true;
     shadow = true;
     vSync = true;
-  };
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
   };
 
   # Enable CUPS to print documents.
@@ -134,35 +109,18 @@ in
     };
   };
 
-  # Enable sound with pipewire.
-  # sound.enable = true;
-  #hardware.pulseaudio = {
-  #  enable = true;
-  #  package = pkgs.pulseaudioFull;
-  #  extraConfig = "
-  #    load-module module-switch-on-connect
-  #  ";
-
-  #};
   programs.dconf.enable = true;
+
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
   programs.fish.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jonny = {
     isNormalUser = true;
@@ -171,7 +129,7 @@ in
     shell = pkgs.fish;
     packages = with pkgs; [
       firefox
-      thunderbird
+      pkgs-unstable.thunderbird
       wmctrl
       pkgs-20-09.git
       git-crypt
@@ -179,7 +137,6 @@ in
       libreoffice
       cabal-install
       slack
-      beekeeper-studio
       ripgrep
       pavucontrol
       evolution
@@ -198,7 +155,7 @@ in
       qemu
       kvmtool
       virtiofsd
-      freerdp
+      freerdp3
       libvirt
       cabal2nix
       openssl
@@ -209,7 +166,6 @@ in
       minetest
       wireguard-tools
       appimage-run
-      python311Packages.pyatv
       lutris
       wine
       srm
@@ -223,13 +179,25 @@ in
       xdg-desktop-portal-hyprland
       wl-clipboard
       swaynotificationcenter
-      lxqt.lxqt-policykit
       nwg-look
       dconf-editor
       rofi-bluetooth
       haskellPackages.cabal-plan
       cider
       hyprlock
+      zen-browser.packages.x86_64-linux.twilight
+      discord
+      tree
+      python313
+      lua
+      haskellPackages.eventlog2html
+      dbeaver-bin
+      hurl
+      jq
+      vintagestory
+      anytype
+      networkmanager_dmenu
+      protonmail-bridge-gui
     ];
   };
 
@@ -253,28 +221,30 @@ in
 
   services.flatpak.enable = true;
 
-  services.gnome.gnome-keyring.enable = true;
-  security.pam.services.kdewallet.kwallet.enable = true;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "dotnet-runtime-7.0.20"
+  ];
+
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    pkgs-unstable.neovim fish alacritty xclip dnsutils
+    pkgs-unstable.neovim fish alacritty dnsutils
+    hyprpolkitagent hyprshot
   ];
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  # environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
 
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 8080 1234 8050 ];
-  networking.firewall.allowedUDPPorts = [ 1234 ];
+  networking.firewall.allowedTCPPorts = [ 8080 ];
+  networking.firewall.allowedUDPPorts = [];
 
-  services.restic.backups.nas = {
+  services.restic.backups.backup = {
     user = "jonny";
-    repository = "sftp:boxyoman@10.0.3.106:/volume1/homes/boxyoman/Backups/framework";
+    repository = "sftp:boxyoman@10.0.3.106:/home/Backups/framework";
     passwordFile = "/restic/password";
     paths = [
       "/home/jonny/"
@@ -307,10 +277,6 @@ in
 #      ];
 #    };
 #  };
-
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

@@ -6,7 +6,6 @@ else
     if [[ `hyprctl monitors | grep "Monitor" | wc -l` != 1 ]]; then
         hyprctl keyword monitor "eDP-1, disable"
     else
-        hyprlock  --immediate
-        systemctl suspend
+        lock.sh
     fi
 fi

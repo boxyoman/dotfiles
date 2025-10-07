@@ -37,25 +37,19 @@
     wtype
     playerctl
     brightnessctl
-    kdePackages.dolphin
-    kdePackages.kwallet
     kdePackages.qtwayland
-    kdePackages.kwalletmanager
     dhall
     gcs
     appflowy
     vlc
     awscli2
     freecad-wayland
+    jq
+    samba4Full
+    nautilus
+    eww
   ];
 
-#   home.pointerCursor = {
-#     gtk.enable = true;
-#     # x11.enable = true;
-#     package = pkgs.quintom-cursor-theme;
-#     name = "Quintom_Ink";
-#     size = 8;
-#   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -98,17 +92,25 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Breeze";
-      package = pkgs.kdePackages.breeze-gtk;
+      name = "Ant";
+      package = pkgs.ant-theme;
     };
     iconTheme = {
       name = "Breeze";
       package = pkgs.kdePackages.breeze-icons;
     };
     cursorTheme = {
-      name = "Quintom_Ink";
+      name = "Quintom_Snow";
       package = pkgs.quintom-cursor-theme;
     };
+  };
+
+  home.pointerCursor = {
+    gtk.enable = true;
+    # x11.enable = true;
+    package = pkgs.quintom-cursor-theme;
+    name = "Quintom_Snow";
+    size = 6;
   };
 
   programs.rofi = {
@@ -124,25 +126,5 @@
       # (rofi-file-browser.override { rofi = pkgs.rofi-wayland; })
     ];
   };
-
-#   xdg.portal = {
-#     enable = true;
-#     config = {
-#       hyprland = {
-#         default = [
-#           "hyprland"
-#           "gtk"
-#         ];
-#         "org.freedesktop.impl.portal.FileChooser" = [
-#           "kde"
-#         ];
-#       };
-#     };
-#     extraPortals = [
-#       pkgs.xdg-desktop-portal-hyprland
-#       pkgs.xdg-desktop-portal-gtk
-#     ];
-
-#   };
 
 }
