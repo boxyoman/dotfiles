@@ -6,4 +6,4 @@ echo -n Password:
 read -s password
 echo
 
-xfreerdp -grab-keyboard /v:192.168.122.156 /u:jonny /p:$password /size:100% /scale-desktop:150% /dynamic-resolution &
+xfreerdp -grab-keyboard /v:192.168.122.156 /u:jonny /p:$password /size:100% /scale-desktop:150% /dynamic-resolution /cert:ignore &

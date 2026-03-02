@@ -34,20 +34,19 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-    wtype
     playerctl
     brightnessctl
     kdePackages.qtwayland
     dhall
     gcs
-    appflowy
     vlc
     awscli2
     freecad-wayland
     jq
     samba4Full
-    nautilus
-    eww
+    kdePackages.dolphin
+    gsettings-qt
+    signal-desktop
   ];
 
 
@@ -91,9 +90,10 @@
 
   gtk = {
     enable = true;
+    colorScheme = "dark";
     theme = {
-      name = "Ant";
-      package = pkgs.ant-theme;
+      name = "Dracula";
+      package = pkgs.dracula-theme;
     };
     iconTheme = {
       name = "Breeze";
@@ -107,7 +107,7 @@
 
   home.pointerCursor = {
     gtk.enable = true;
-    # x11.enable = true;
+    x11.enable = true;
     package = pkgs.quintom-cursor-theme;
     name = "Quintom_Snow";
     size = 6;
@@ -115,7 +115,7 @@
 
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi-wayland;
+    package = pkgs.rofi;
     pass = {
       enable = true;
       package = pkgs.rofi-pass-wayland;

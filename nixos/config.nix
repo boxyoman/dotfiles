@@ -33,7 +33,11 @@ in
 
   programs.steam.enable = true;
 
+  programs.nix-ld.enable = true;
+
   hardware.enableAllFirmware = true;
+
+  services.gvfs.enable = true;
 
   services.blueman.enable = true;
   hardware.bluetooth = {
@@ -71,7 +75,11 @@ in
   services.fwupd.enable = true;
 
   services.displayManager = {
-    sddm.enable = true;
+    sddm = {
+      enable = true;
+      wayland.enable = true;
+      theme = "Dracula";
+    };
   };
 
   # programs.uwsm.enable = true;
@@ -79,9 +87,10 @@ in
   programs.hyprlock = {
     enable = true;
   };
-  services.displayManager.sddm.wayland.enable = true;
+
   programs.hyprland = {
     enable = true;
+    xwayland.enable = true;
     # withUWSM = true;
   };
   programs.nm-applet.enable = true;
@@ -122,6 +131,7 @@ in
   programs.fish.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  security.pam.services.jonny.kwallet.enable = true;
   users.users.jonny = {
     isNormalUser = true;
     description = "jonny";
@@ -130,6 +140,12 @@ in
     packages = with pkgs; [
       firefox
       pkgs-unstable.thunderbird
+      pkgs-unstable.zig
+      pkgs-unstable.zls
+      odin
+      ols
+      imagemagick
+      jpegoptim
       wmctrl
       pkgs-20-09.git
       git-crypt
@@ -139,7 +155,6 @@ in
       slack
       ripgrep
       pavucontrol
-      evolution
       cloc
       librewolf
       qutebrowser
@@ -152,18 +167,18 @@ in
       pkgs-unstable.bruno
       tmux
       ghc
+      haskell.compiler.ghc9102
       qemu
       kvmtool
       virtiofsd
-      freerdp3
+      freerdp
       libvirt
       cabal2nix
       openssl
       jdk21
       jdk17
-      du-dust
       prismlauncher
-      minetest
+      luanti
       wireguard-tools
       appimage-run
       lutris
@@ -175,7 +190,7 @@ in
       krita
       networkmanagerapplet
       waybar
-      rofi-wayland
+      rofi
       xdg-desktop-portal-hyprland
       wl-clipboard
       swaynotificationcenter
@@ -183,8 +198,11 @@ in
       dconf-editor
       rofi-bluetooth
       haskellPackages.cabal-plan
+      protonvpn-gui
+      pkgs-unstable.tor-browser
       cider
       hyprlock
+      hyprsunset
       zen-browser.packages.x86_64-linux.twilight
       discord
       tree
@@ -198,6 +216,12 @@ in
       anytype
       networkmanager_dmenu
       protonmail-bridge-gui
+      kdePackages.kwallet
+      kdePackages.kwalletmanager
+      feh
+      traceroute
+      dpkg
+      steam-run
     ];
   };
 
@@ -224,7 +248,7 @@ in
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
-    "dotnet-runtime-7.0.20"
+    "dotnet-runtime-7.0.20" ## for vintage story
   ];
 
 
@@ -233,14 +257,15 @@ in
   environment.systemPackages = with pkgs; [
     pkgs-unstable.neovim fish alacritty dnsutils
     hyprpolkitagent hyprshot
+    cifs-utils samba4Full
   ];
-  # environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
 
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 8080 ];
-  networking.firewall.allowedUDPPorts = [];
+  networking.firewall.allowedUDPPorts = [ 5520 ];
 
   services.restic.backups.backup = {
     user = "jonny";

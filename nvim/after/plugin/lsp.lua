@@ -37,6 +37,12 @@ vim.lsp.config('pyright', {
 vim.lsp.config('ts_ls', {
     flags = lsp_flags,
 })
+vim.lsp.config('zls', {
+    flags = lsp_flags,
+})
+vim.lsp.config('ols', {
+    flags = lsp_flags,
+})
 vim.lsp.config('rust_analyzer', {
     flags = lsp_flags,
     -- Server-specific settings...

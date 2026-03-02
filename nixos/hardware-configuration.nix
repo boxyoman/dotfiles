@@ -25,6 +25,27 @@
       fsType = "vfat";
     };
 
+  fileSystems."/mnt/nas" = {
+    device = "//10.0.3.106/homes";
+    fsType = "cifs";
+    options = let
+      # this line prevents hanging on network split
+      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+
+    in ["${automount_opts},credentials=/restic/smb-secrets"];
+  };
+
+  fileSystems."/mnt/onyx" = {
+    device = "//10.0.3.106/onyx";
+    fsType = "cifs";
+    options = let
+      # this line prevents hanging on network split
+      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+
+    in ["${automount_opts},credentials=/restic/smb-secrets"];
+  };
+
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/e583eb63-ce87-4d0e-9639-c6ffeac61292"; }
     ];

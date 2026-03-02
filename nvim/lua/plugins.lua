@@ -4,7 +4,8 @@ return {
   'bling/vim-airline',
   'vim-airline/vim-airline-themes',
   'nanotech/jellybeans.vim',
-  'Mofiqul/vscode.nvim',
+  -- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  "AlexvZyl/nordic.nvim",
   'nvim-treesitter/nvim-treesitter',
   "lukas-reineke/indent-blankline.nvim",
 
@@ -14,6 +15,7 @@ return {
   'LnL7/vim-nix',
   'neovimhaskell/haskell-vim',
   'ionide/Ionide-vim',
+  'neovim/nvim-lspconfig',
   {
     'MrcJkb/haskell-tools.nvim',
     dependencies = {

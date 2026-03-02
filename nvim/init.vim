@@ -7,7 +7,6 @@
 let mapleader = ","
 
 lua require('config.lazy')
-lua require('color')
 lua require('indent-blankline')
 
 set mouse=
@@ -134,6 +133,7 @@ nnoremap <leader>l :set list!<CR>
 set listchars=tab:▸\ ,eol:¬
 
 "Invisible character colors
+colorscheme elflord
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
 
