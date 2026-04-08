@@ -107,6 +107,7 @@ in
 
   programs.virt-manager.enable = true;
   virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
   services.qemuGuest.enable = true;
   virtualisation.kvmgt.enable = true;
 
@@ -130,6 +131,9 @@ in
 
   programs.fish.enable = true;
 
+  # security.wrappers.spice-client-glib-usb-acl-helper.source =
+  #   "${pkgs.spice-gtk}/bin/spice-client-glib-usb-acl-helper";
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   security.pam.services.jonny.kwallet.enable = true;
   users.users.jonny = {
@@ -142,8 +146,8 @@ in
       pkgs-unstable.thunderbird
       pkgs-unstable.zig
       pkgs-unstable.zls
-      odin
-      ols
+      pkgs-unstable.odin
+      pkgs-unstable.ols
       imagemagick
       jpegoptim
       wmctrl
@@ -222,6 +226,9 @@ in
       traceroute
       dpkg
       steam-run
+      entr
+      postgresql_18
+      raylib
     ];
   };
 

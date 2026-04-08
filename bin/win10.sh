@@ -1,7 +1,7 @@
 #!/bin/sh
 
-virsh --connect qemu:///system start win10
-sleep 30
+# virsh --connect qemu:///system start win10
+# sleep 30
 echo -n Password:
 read -s password
 echo
