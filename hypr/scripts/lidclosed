@@ -7,5 +7,6 @@ else
         hyprctl keyword monitor "eDP-1, disable"
     else
         lock.sh
+        suspend.sh
     fi
 fi

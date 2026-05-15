@@ -148,8 +148,6 @@ in
       pkgs-unstable.zls
       pkgs-unstable.odin
       pkgs-unstable.ols
-      imagemagick
-      jpegoptim
       wmctrl
       pkgs-20-09.git
       git-crypt
@@ -182,7 +180,7 @@ in
       jdk21
       jdk17
       prismlauncher
-      luanti
+      # luanti
       wireguard-tools
       appimage-run
       lutris
