@@ -7,20 +7,18 @@ SESSIONEXISTS=$(tmux list-sessions | grep $SESSION)
 # Only create tmux session if it doesn't already exist
 if [ "$SESSIONEXISTS" = "" ]
 then
-    # Start New Session with our name
     tmux new-session -d -s $SESSION
 
-    # Create and setup pane for hugo server
     tmux send-keys -t $SESSION:1 "cd ~/Developer/sked/sked-v2/api; nix-shell --command \"fish\"" C-m
 
-
-    # setup Writing window
     tmux new-window -t $SESSION:2
     tmux send-keys -t $SESSION:2 "cd ~/Developer/sked/sked-v2/api; nix-shell --command \"fish\"" C-m
 
-    # Setup an additional shell
     tmux new-window -t $SESSION:3
     tmux send-keys -t $SESSION:3 "cd ~/Developer/sked/sked-v2/api; nix-shell --command \"fish\"" C-m
+
+    tmux new-window -t $SESSION:4
+    tmux send-keys -t $SESSION:4 "cd ~/Developer/sked/sked-v2/infrastructure-local; nix-shell --command \"fish\"" C-m
 fi
 
 # Attach Session, on the Main window

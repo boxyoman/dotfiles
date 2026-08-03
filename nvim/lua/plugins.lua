@@ -6,7 +6,6 @@ return {
   'nanotech/jellybeans.vim',
   -- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   "AlexvZyl/nordic.nvim",
-  'nvim-treesitter/nvim-treesitter',
   "lukas-reineke/indent-blankline.nvim",
 
 
@@ -14,14 +13,9 @@ return {
   'dag/vim-fish',
   'LnL7/vim-nix',
   'neovimhaskell/haskell-vim',
+  'MrcJkb/haskell-tools.nvim',
   'ionide/Ionide-vim',
   'neovim/nvim-lspconfig',
-  {
-    'MrcJkb/haskell-tools.nvim',
-    dependencies = {
-      'neovim/nvim-lspconfig',
-    },
-  },
   'purescript-contrib/purescript-vim',
   'vmchale/dhall-vim',
   'ziglang/zig.vim',
@@ -60,7 +54,6 @@ return {
     dependencies = {
       "MunifTanjim/nui.nvim",
       "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
     },
     ft = "hurl",
     opts = {
