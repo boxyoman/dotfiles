@@ -2,9 +2,8 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, nixpkgs-unstable, nixpkgs-20-09, zen-browser, system, ... }:
-let pkgs-20-09 = (import nixpkgs-20-09) {system = "x86_64-linux";};
-    pkgs-unstable = (import nixpkgs-unstable) {system = "x86_64-linux"; config.allowUnfree = true;};
+{ config, pkgs, nixpkgs-unstable, zen-browser, system, ... }:
+let pkgs-unstable = (import nixpkgs-unstable) {system = "x86_64-linux"; config.allowUnfree = true;};
 
 in
 {
@@ -13,9 +12,15 @@ in
       ./hardware-configuration.nix
     ];
 
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  services.openssh = {
+    enable = true;
+    openFirewall = true;
+  };
+
 
   # Fix for the headphone jack mic
   boot.extraModprobeConfig = ''
@@ -111,14 +116,6 @@ in
   services.qemuGuest.enable = true;
   virtualisation.kvmgt.enable = true;
 
-  virtualisation.docker = {
-    enable = true;
-    rootless = {
-      enable = true;
-      setSocketVariable = true;
-    };
-  };
-
   programs.dconf.enable = true;
 
   security.rtkit.enable = true;
@@ -139,26 +136,24 @@ in
   users.users.jonny = {
     isNormalUser = true;
     description = "jonny";
-    extraGroups = [ "networkmanager" "wheel" "audio" "kvm" "docker"];
+    extraGroups = [ "networkmanager" "wheel" "audio" "kvm"];
     shell = pkgs.fish;
     packages = with pkgs; [
       firefox
+      localsend
       pkgs-unstable.thunderbird
       pkgs-unstable.zig
       pkgs-unstable.zls
       pkgs-unstable.odin
       pkgs-unstable.ols
       wmctrl
-      pkgs-20-09.git
-      git-crypt
+      git
       direnv
       libreoffice
       cabal-install
-      slack
       ripgrep
       pavucontrol
       cloc
-      librewolf
       qutebrowser
       ungoogled-chromium
       typescript
@@ -227,6 +222,8 @@ in
       entr
       postgresql_18
       raylib
+      libimobiledevice
+      _7zz
     ];
   };
 
@@ -254,6 +251,8 @@ in
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
     "dotnet-runtime-7.0.20" ## for vintage story
+    "librewolf-151.0.2-1"
+    "librewolf-unwrapped-151.0.2-1"
   ];
 
 
@@ -269,7 +268,7 @@ in
 
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 8080 ];
+  networking.firewall.allowedTCPPorts = [ 22 8080 ];
   networking.firewall.allowedUDPPorts = [ 5520 ];
 
   services.restic.backups.backup = {

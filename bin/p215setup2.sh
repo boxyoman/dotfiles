@@ -11,11 +11,11 @@ then
     tmux new-session -d -s $SESSION
 
     # Create and setup pane for hugo server
-    tmux send-keys -t $SESSION:1 "cd ~/Developer/home/p215-playing/zig-play/" C-m
+    tmux send-keys -t $SESSION:1 "cd ~/Developer/home/p215-playing/odin-play/" C-m
 
     # setup Writing window
     tmux new-window -t $SESSION:2
-    tmux send-keys -t $SESSION:2 "cd ~/Developer/home/p215-playing/zig-play/" C-m
+    tmux send-keys -t $SESSION:2 "cd ~/Developer/home/p215-playing/odin-play/" C-m
 
 fi
 
