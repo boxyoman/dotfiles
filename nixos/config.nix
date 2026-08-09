@@ -79,15 +79,15 @@ in
 
   services.fwupd.enable = true;
 
-  services.displayManager = {
-    sddm = {
-      enable = true;
-      wayland.enable = true;
-      theme = "Dracula";
-    };
-  };
+  # services.displayManager = {
+  #   sddm = {
+  #     enable = true;
+  #     wayland.enable = true;
+  #     theme = "Dracula";
+  #   };
+  # };
 
-  # programs.uwsm.enable = true;
+  programs.uwsm.enable = true;
 
   programs.hyprlock = {
     enable = true;
@@ -96,7 +96,7 @@ in
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
-    # withUWSM = true;
+    withUWSM = true;
   };
   programs.nm-applet.enable = true;
   programs.waybar.enable = true;
@@ -146,7 +146,6 @@ in
       pkgs-unstable.zls
       pkgs-unstable.odin
       pkgs-unstable.ols
-      wmctrl
       git
       direnv
       libreoffice
@@ -157,25 +156,17 @@ in
       qutebrowser
       ungoogled-chromium
       typescript
-      nodePackages.typescript-language-server
       gnumake
       gcc
-      nodejs
       pkgs-unstable.bruno
       tmux
       ghc
-      haskell.compiler.ghc9102
-      qemu
-      kvmtool
-      virtiofsd
-      freerdp
       libvirt
       cabal2nix
       openssl
       jdk21
       jdk17
       prismlauncher
-      # luanti
       wireguard-tools
       appimage-run
       lutris
@@ -184,7 +175,6 @@ in
       mumble
       restic
       unzip
-      krita
       networkmanagerapplet
       waybar
       rofi
@@ -195,9 +185,8 @@ in
       dconf-editor
       rofi-bluetooth
       haskellPackages.cabal-plan
-      protonvpn-gui
+      proton-vpn
       pkgs-unstable.tor-browser
-      cider
       hyprlock
       hyprsunset
       zen-browser.packages.x86_64-linux.twilight
@@ -208,22 +197,17 @@ in
       haskellPackages.eventlog2html
       dbeaver-bin
       hurl
-      jq
       vintagestory
-      anytype
       networkmanager_dmenu
       protonmail-bridge-gui
       kdePackages.kwallet
       kdePackages.kwalletmanager
       feh
       traceroute
-      dpkg
       steam-run
-      entr
       postgresql_18
       raylib
       libimobiledevice
-      _7zz
     ];
   };
 
@@ -238,11 +222,6 @@ in
   programs.appimage = {
     enable = true;
     binfmt = true;
-  };
-  services.tailscale = {
-    enable = true;
-    useRoutingFeatures = "client";
-    package = pkgs-unstable.tailscale;
   };
 
   services.flatpak.enable = true;

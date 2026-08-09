@@ -42,7 +42,6 @@
     vlc
     awscli2
     freecad-wayland
-    jq
     samba4Full
     kdePackages.dolphin
     gsettings-qt
@@ -126,5 +125,6 @@
       # (rofi-file-browser.override { rofi = pkgs.rofi-wayland; })
     ];
   };
+  gtk.gtk4.theme = config.gtk.theme;
 
 }
