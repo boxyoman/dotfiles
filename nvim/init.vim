@@ -9,6 +9,14 @@ let mapleader = ","
 lua require('config.lazy')
 lua require('indent-blankline')
 
+let g:haskell_enable_quantification = 1
+let g:haskell_enable_recursivedo = 1
+let g:haskell_enable_arrowsyntax = 1
+let g:haskell_enable_pattern_synonyms = 1
+let g:haskell_enable_typeroles = 1
+let g:haskell_enable_static_pointers = 1
+let g:haskell_backpack = 1
+
 set mouse=
 
 " Theme Stuff
@@ -38,6 +46,7 @@ xmap <silent> ige <Plug>CamelCaseMotion_ie
 " Gundo
 nnoremap <leader>u :MundoToggle<CR>
 
+syntax on
 
 " Tab
 set shiftwidth=2
